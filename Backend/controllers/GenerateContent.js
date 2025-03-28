@@ -2,18 +2,19 @@ const express = require('express');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const Article = require("../Models/ContentSchema");
 //import OpenAI from "openai";
-const {OpenAI} = require('openai')
+//const {OpenAI} = require('openai')
+require("dotenv").config();
 
  
 
 const GenerateAIContent = async(req,res) =>{
-    // const genAI = new GoogleGenerativeAI("");
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        console.log(genAI,"+++++++++++")
         const model = genAI.getGenerativeModel({model:"gemini-2.0-flash"})
 
         // const prompt = "Write an article in pure html css on topic comments in python";
     try {
         const {prompt} = req.body;
-        // const gemini_api_url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${AIzaSyCZUCn1VCY9enmBkGnuQLHcduEDAAnP1e4}`;
         const result = await model.generateContent(prompt);
         const responsetext = await result.response.text();
         // res.json(responsetext);
@@ -90,24 +91,7 @@ const getcontent = async(req,res) =>{
      }
 }
 
-// const updatecontent = async () => {
-//     try {
-//         const {title,content} = req.body;
-//         const {id} = req.params;
-//         const data = await Article.findByIdAndUpdate(id,{title},{new:true});
-//         if (!data){
-//             return res.status(400).json({success:false,message:"Article not found"})
-//         }
-//         res.status(200).send({
-//             success:true,
-//             message:'content updated succesfully'
-//         })
-        
-//     } catch (error) {
-//         console.log("Error",error)
-        
-//     }
-// };
+ 
 
 const addContent = async (req,res) =>{
     try {

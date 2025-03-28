@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 //const colors = require('colors');
 const { MongoClient, GridFSBucket } = require('mongodb');
+require("dotenv").config();
 
 let bucket;
 const connectDB = async () =>{
     try{
-        const conn = await mongoose.connect('mongodb://127.0.0.1:27017/knowledgepool');
+        const conn = await mongoose.connect(process.env.MONGODB_KEY);
         console.log(`connnected to mongodb dtabase ${conn.connection.host}`);
 
         // create gridfs bucket using mongoclient not mongoose
-        const client = new MongoClient('mongodb://127.0.0.1:27017/knowledgepool');
+        const client = new MongoClient(process.env.MONGODB_KEY);
         await client.connect()
         const db = client.db('knowledgepool');
         bucket = new GridFSBucket(db,{bucketName:'videos'})
