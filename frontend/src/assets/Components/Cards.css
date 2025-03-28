@@ -1,0 +1,221 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+*:focus{
+    outline: none;
+}
+
+/* updated on 29 dec */
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.1rem;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+    align-items: center;
+    /* border-bottom: 0.10rem solid black; */
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 0.9rem;
+    position: sticky;
+    top: 0;
+    width: 100%;
+     
+    
+}
+.lnavbar{
+    display: flex;
+    gap: 1rem;
+}
+.llnavbar{
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    border-right: 0.1rem solid grey;
+    padding: 0rem 0.8rem 0rem 0.4rem;
+}
+/* updated on 29 dec */
+.rlnavbar {
+    display: flex;
+    gap: 1rem;
+    padding-right: 0.8rem;
+    border-right: 0.1rem solid grey;
+    font-size: 0.9rem;
+}
+.rlnavbar li{
+    list-style: none;
+    color: black;  
+}
+ 
+.rlnavbar li:hover{
+    list-style: none;  
+    color: blue;
+    cursor: pointer;  
+}
+.rnavbar{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding-left: 0.5rem;
+     
+}
+.inputfld{
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+}
+.inputfld input[type="text"i]{
+    border-right: 0.1rem solid grey;
+    padding-right: 0.8rem;
+    width: 20rem;
+    border: none;
+    background-color: white;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+.btns {
+    display: contents;
+}
+.btn31{
+    border-left: 0.1rem solid grey;
+    padding-left: 2rem;
+}
+/* updated on 29 dec */
+.btn3 {
+    background-color: green;
+    border-radius: 0.4rem;
+    color: white;
+    width: 7rem;
+    height: 2.5rem;
+}
+.btn1,.btn2{
+    font-size: 0.9rem;
+    border: none;
+    background-color: white;
+}
+.btn1:hover,.btn2:hover{
+    color: blue;
+    cursor: pointer;
+}
+.mainbody{
+    display: flex;
+}
+.tutlist1{
+    padding: 1rem;
+}
+.tutlist1 p{
+    margin-top: 0.3rem;
+}
+.tutlist1 h4{
+    margin-top: 1rem;
+}
+.tutlist1 div{
+    display: flex;
+    justify-content: space-between;
+}
+.ttlist div:hover{
+    background-color:whitesmoke;
+    color: blue;
+}
+ 
+ 
+/* updated on 4 jan 2025 */
+.rightbody{
+    border: 2px solid black;
+    flex-basis: 100%;
+    padding: 0.8rem;
+    background-color: whitesmoke;
+    padding: 1.8rem;
+    overflow: scroll;
+    height: 35rem;
+    
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.tutlist2 {
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.tutlist2 div{
+    justify-content: flex-start;
+    gap: 0.6rem;
+}
+.upperdiv{
+    display: flex;
+    gap: 0.5rem;
+    height: 4rem;
+}
+.farunning{
+    font-size: 2.5rem;
+}
+.upperdiv h5{
+    opacity: 0.4;
+    font-size: 0.9rem;
+}
+.crd1{
+    height: 26rem;
+    width: 20rem;
+    /* border: 0.1rem solid black; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 0.2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.lowerdiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem; 
+}
+.crd1 img{
+    width: 19.85rem;
+    height: 13rem;
+    text-align: center;
+    margin: auto;
+}
+.des{
+    padding: 0.8rem;
+    font-size: 1.2rem;
+}
+.des h4{
+    font-weight: 300;
+}
+.des h2{
+    font-size: 0.8rem;
+    margin-top: 0.6rem;
+    font-weight: 100;
+    opacity: 0.4;
+}
+.tutdes img{
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 2rem;
+}
+.tutdes{
+    display: flex;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
+    gap: 5rem;
+    font-size: 0.8rem;
+   
+}
+.tutdes1{
+    display: flex;
+    gap: 0.5rem;
+}
+.time {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+.rating{
+    display: flex;
+    margin-top: 0.8rem;
+    border-top: 0.1rem solid grey;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    justify-content: space-between;
+}

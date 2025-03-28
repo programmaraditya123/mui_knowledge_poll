@@ -1,0 +1,17 @@
+.crnav{
+    display: flex;
+    justify-content: space-around;
+    
+} 
+.crnavl li{
+    list-style: none;
+    font-size: 1.6rem;
+    padding: 0.3rem;
+    
+}
+.crnavr input{
+    font-size: 1.6rem;
+    border-radius: 0.4rem;
+    padding: 0.3rem;
+    width: 30rem;
+}

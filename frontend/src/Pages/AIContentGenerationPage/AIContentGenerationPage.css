@@ -1,0 +1,124 @@
+.ai0{
+    text-align: center;
+    padding: 0rem;
+    font-size: 1.2rem;
+    height: 90vh;
+     
+}
+.ai1{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 0;
+}
+.ai11{
+    display: flex;
+    gap: 1rem;
+    padding: 0.1rem;
+}
+.btn-15{
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+}
+.aibtns{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.bars{
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+.models-drop:hover{
+    cursor: pointer;
+    color: blue;
+}
+.ai13{
+    bottom: 0rem;
+    position: absolute;
+    width: 100%;
+}
+.ai13 textarea{
+    height: 4rem;
+    width: 40rem;
+    border-radius: 0.5rem;
+    padding: 1rem 0 2rem 1rem;
+    font-size: 1.2rem;
+}
+.ai12{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 70rem;
+    height: 17rem;
+    border-radius: 0.2rem;
+    overflow: scroll;
+    
+    
+}
+.textareabtns{
+     display: flex;
+     justify-content: center;
+     gap: 0.5rem;
+     margin-top: 0.5rem;
+}
+.ai12{
+    border: 0.1rem solid black;
+}
+.chat{
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 2px 0;
+}
+.ai12 {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.ai{
+    background: #f1f1f1;
+    align-self: flex-start;
+    border: 1px solid red;
+}
+.user{
+    background: #007bff;
+    color: white;
+    align-self: flex-end;
+    border: 4px solid black;
+}
+
+@media screen and (max-width:420px) {
+    .aibtns{
+        gap: 0.5rem;
+    }
+    .btn-15{
+        padding: 0.1rem;
+        font-size: 0.8rem;
+    }
+    .ai11{
+        font-size: 0.8rem;
+    }
+    .ai12{
+        width: 20rem;
+        height: 20rem;
+
+    }
+    .ai13 textarea{
+        width: 20rem;
+    }
+    
+}
+ 
+ 
+
+ 

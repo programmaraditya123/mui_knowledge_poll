@@ -1,0 +1,42 @@
+.cbody1p{
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+.cbody2p{
+    text-align: center;
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.6;
+}
+.cbodyimg img{
+    height: 20rem;
+    display: block;
+    width: 50%;
+    margin: auto;
+    margin-top: 0.5rem;
+     
+}
+.cbody3p{
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 2rem;
+    font-weight: 800;
+}
+.cbody4{
+    display: flex;
+    justify-content: space-around;
+}
+.cbody41{
+    text-align: center;
+    margin-top: 1rem;
+}
+.cbody4p{
+    font-size: 2.5rem;
+    color: blue;
+    font-weight: 800;
+}
+.cbody5p{
+    opacity: 0.6;
+}

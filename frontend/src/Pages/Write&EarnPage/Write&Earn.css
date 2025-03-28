@@ -1,0 +1,46 @@
+.writepart{
+    display: flex;
+    /* justify-content: space-between; */
+}
+.writepart1{
+    flex-basis: 15%;
+   
+}
+.writepart2{
+    flex-basis: 85%;
+     
+}
+.writepart1 p{
+    font-size: 1.5rem;
+    text-align: center;
+}
+.writepart1 li{
+    font-size: 1.2rem;
+    list-style: none;
+    padding:1.2rem;
+}
+.writepart1 li:hover{
+    background-color: aliceblue;
+}
+
+@media screen and (max-width:420px) {
+    .writepart1{
+        display: none;
+    }
+    .writepart2{
+        flex-basis: 100%;
+    }
+    .writepart2 input{
+        display: none;
+        width: 90%;
+        height: 2rem;
+        font-size: 1.5rem;
+    }
+    .btninput input{
+        width: 70%;
+        height: 2rem;
+        font-size: 1.5rem;
+
+    }
+    
+}

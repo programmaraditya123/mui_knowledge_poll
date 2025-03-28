@@ -1,0 +1,36 @@
+.lgcrds{
+    border: 0.1rem solid black;
+    /* width: 50%; */
+    text-align: center;
+    height: 18rem;
+    border-radius: 0.6rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    display: grid;
+    place-content: center;
+     
+}
+.lgcrds-cont{
+     font-size: 2rem;
+      
+
+}
+.btn11{
+    border-radius: 0.8rem;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+.lgcrds:hover .btn11{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+
+@media screen and (max-width: 420px) { 
+    .lgcrds{
+        width: 100%;
+    }
+    
+}

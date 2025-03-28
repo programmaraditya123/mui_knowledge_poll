@@ -1,0 +1,55 @@
+.navhome{
+    list-style: none;
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    background-color: aliceblue;
+    padding: 0.8rem;
+}
+.navhome1{
+    display: flex;
+    gap: 2rem;
+     
+     
+}
+.navhome1 li{
+    padding: 0.3rem;
+    cursor: pointer;
+    padding-top: 0.7rem;
+}
+.navhome2{
+    display: flex;
+    gap: 2rem;
+     
+}
+.navhome2 li{
+    padding: 0.3rem;
+    cursor: pointer;
+}
+.navhome1 input{
+    border-radius: 0.4rem;
+    padding: 0.1rem;
+    font-size: 1.2rem;
+    width: 18rem;
+}
+.navicons{
+    padding: 0.2rem;
+}
+.navdrop{
+    display: none;
+    position: absolute;
+    border: 1px solid black;
+    z-index: 1;
+    /* min-width: 5rem; */
+    /* padding: 1rem 2rem; */
+    margin-top: 1.8rem;
+    margin-left: 6rem;
+    background-color: white;
+    border-radius: 0.4rem;
+}
+.navhome li:hover{
+    background-color: aliceblue;
+}
+.navdropshow{
+    display: block;
+}

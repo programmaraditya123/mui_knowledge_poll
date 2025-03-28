@@ -1,0 +1,102 @@
+/* Background gradient animation */
+.container {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #a1c4fd, #03080a, #667eea, #764ba2);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+  }
+  
+  /* Title styling */
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Input container */
+  .input-wrapper {
+    position: relative;
+    width: 300px;
+  }
+  
+  /* Input box with animation */
+  .search-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    outline: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Input focus effect */
+  .search-input:focus {
+    border-color: #fff;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Placeholder fade-in effect */
+  .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+    animation: fadeIn 2s ease-in-out forwards;
+  }
+  
+  /* Autocomplete suggestions */
+  .suggestions {
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Individual suggestion */
+  .suggestions li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: #333;
+  }
+  
+  /* Hover effect */
+  .suggestions li:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Keyframe Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  

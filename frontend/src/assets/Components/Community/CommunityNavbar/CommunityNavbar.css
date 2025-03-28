@@ -1,0 +1,42 @@
+.cnav li{
+    list-style: none;
+    padding: 0.1rem;
+}
+.cnav1{
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.cnav a{
+    text-decoration: none !important;
+    color: black;
+}
+.cnav{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    
+     
+}
+.cnav input{
+    font-size: 1rem;
+    border-radius: 0.4rem;
+    padding: 0.2rem;
+}
+.reacticon{
+    font-size: 0.8rem;
+    text-align: center;
+    
+}
+.btn-2{
+    border-radius: 0.3rem;
+    color: white;
+    background-color: blue;
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    cursor:pointer;
+    border: none;
+}
