@@ -12,7 +12,8 @@ const multer = require("multer");
 //const { MongoClient, GridFSBucket } = require('mongodb');
 const { Readable } = require('stream');
 const path = require('path');
-const Course = require('./Models/CourseModel')
+const Course = require('./Models/CourseModel');
+require("dotenv").config();
 
 const app = express()
 
@@ -82,9 +83,10 @@ app.post('/upload',upload.single('video'),(req,res) => {
 
 
 
+PORT = process.env.PORT || 8000;
+//console.log(PORT)
 
 
-
-app.listen('8000',() => {
-    console.log("Server.js is runing on port 8000")
+app.listen(PORT,() => {
+    console.log(`app.js is runing on port  ${PORT}`)
 })
