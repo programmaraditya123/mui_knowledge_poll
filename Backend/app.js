@@ -35,6 +35,10 @@ app.get('/home',(req,res) =>{
     res.send("Heelo aditya this is home route")
 })
 
+app.get('/about',(req,res) => {
+    res.send("This is about page")
+})
+
 app.post('/upload',upload.single('video'),(req,res) => {
     // const {courseid} = req.body;
     if(!req.file) return res.status(400).json({message:"No file uploaded"})
