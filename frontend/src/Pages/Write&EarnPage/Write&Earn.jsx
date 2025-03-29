@@ -45,7 +45,7 @@ window.onclick = function(event) {
 
   const addcont = async () =>{
     try {
-      const data = await axios.post(`http://localhost:8000/app/getcont/addcontent`,{title:title,content:content});
+      const data = await axios.post(`http://13.201.93.211/api/app/getcont/addcontent`,{title:title,content:content});
       console.log("++++++++++++Content Generated sucessfully");
       
     } catch (error) {
