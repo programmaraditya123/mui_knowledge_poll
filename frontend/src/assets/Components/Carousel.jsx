@@ -92,7 +92,7 @@ function Carousel(props) {
       {
         breakpoint: 420,  
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll:1,
           arrows: true,
           // centerPadding:"5px",  

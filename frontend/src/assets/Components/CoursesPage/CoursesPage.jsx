@@ -14,7 +14,7 @@ const CoursesPage = () => {
     <div className='cr'>
     <div className='coursenavbar'><CoursePageNavbar/></div>
     <h1>Machine Learning</h1>
-       <div className='card'>
+       <div className='carding'>
     <div className='carditem' onClick={courseDetail}><Cards/></div>
       <div className='carditem'><Cards/></div>
       <div className='carditem'><Cards/></div>
