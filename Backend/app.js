@@ -5,6 +5,8 @@ const bodyparser = require('body-parser');
 const {connectDB,getBucket} = require('./config/db');
 const AIcontentRoute = require('./Routes/AIcontentRoute');
 const CourseRoute = require('./Routes/CourseRoute')
+const authUserRoute = require('./Routes/authUserRoute')
+const searchRoute = require("./Routes/searchRoute")
 const multer = require("multer");
 //const { GridFsStorage } = require("multer-gridfs-storage");
 //const mongoose = require("mongoose");
@@ -30,6 +32,10 @@ const upload = multer({ storage });
 app.use("/app/getcont",AIcontentRoute);
 
 app.use("/app/getcourse",CourseRoute);
+
+app.use("/app/userauth",authUserRoute);
+
+app.use("/app/searchdb",searchRoute);
 
 app.get('/home',(req,res) =>{
     res.send("Heelo aditya this is home route")

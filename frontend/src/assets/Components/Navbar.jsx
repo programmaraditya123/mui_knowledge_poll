@@ -3,9 +3,12 @@ import './Navbar.css';
 import { FaBars } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 import { RiAccountPinCircleFill } from "react-icons/ri";
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
   const [pdrop,setPdrop] = useState(false);
+  const[isSignin,setIsSignIn] = useState(false);
+  const[email,setEmail] = useState("");
   const dropref = useRef(null);
   
   useEffect (()=>{
@@ -20,6 +23,25 @@ const Navbar = () => {
       document.removeEventListener('mousedown',handleClickOutside)
     }
   },[])
+
+  useEffect (() =>{
+    const user = JSON.parse(localStorage.getItem("token"))
+    const email = JSON.parse(localStorage.getItem("email"))
+    if (user && email){
+      setIsSignIn(true);
+      setEmail(email.split("@")[0]);
+    }
+  },[]);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    setIsSignIn(false);
+    setEmail("");
+
+
+  };
+  
   return (
     <div>
     <div className='navhome'>
@@ -29,9 +51,13 @@ const Navbar = () => {
         <input type='text' placeholder='Search here ...'/>
       </div>
       <div className='navhome2'>
-      <li>Log in</li>
+      {!isSignin ? (<NavLink to='/login'><li>Log in</li></NavLink>) :
+       (<NavLink onClick={handleLogOut}><li>Log out</li></NavLink>)}
+      {/* <NavLink to='/register'><li>Register</li></NavLink> */}
+      {/* <NavLink to='/login'><li>Log in</li></NavLink> */}
         <li><IoMdNotifications /></li>
         <li onClick={()=> setPdrop(!pdrop)}><RiAccountPinCircleFill /></li>
+        <li>{isSignin && <span className='user-email'>{email}</span>}</li>
         {/* <li></li> */}
         <div ref={dropref} className={`navdrop ${pdrop ? "navdropshow" : ""}`}>
           <li>Profile</li>

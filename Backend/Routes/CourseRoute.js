@@ -6,7 +6,7 @@ const Router = express.Router();
 
 Router.post("/postCourse",addCourse);
 
-Router.get('/video/:filename',getVideo)
+Router.get('/video/:filename',getVideo);
  
 
  

@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     background: linear-gradient(-45deg, #a1c4fd, #03080a, #667eea, #764ba2);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
@@ -14,6 +14,7 @@
   /* Title styling */
   .title {
     font-size: 2rem;
+    text-align: center;
     font-weight: bold;
     color: #fff;
     margin-bottom: 20px;
@@ -23,7 +24,13 @@
   /* Input container */
   .input-wrapper {
     position: relative;
-    width: 300px;
+    width: 18rem;
+     
+    margin-left: auto;
+    margin-right: auto;
+     
+     
+     
   }
   
   /* Input box with animation */
@@ -101,3 +108,10 @@
     }
   }
   
+
+@media screen and (max-width : 420px){
+  .input-wrapper{
+    margin-right: 3rem;
+  }
+
+  }

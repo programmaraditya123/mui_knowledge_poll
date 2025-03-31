@@ -4,18 +4,22 @@ import './Write&Earn.css';
 import axios from 'axios';
 import { FaBars } from "react-icons/fa";
 import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router';
 
 
 const WriteEarn = ({ placeholder }) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const editor = useRef(null);
   //const [cdata,setCData] = useState("")
   //console.log('------------',title)
   const Title = location.state?.Title;
   const Content = location.state?.Content;
+  const tag = location.state?.tag;
   const[title,setTitle] = useState(Title);
   const [content, setContent] = useState(Content);
-  console.log("***********",title)
+  //console.log("***********",title)
+  console.log('...........',tag)
 
   const myfunc = () => {
     document.getElementById("mydropwe").classList.toggle("show");
@@ -45,9 +49,29 @@ window.onclick = function(event) {
 
   const addcont = async () =>{
     try {
-      const data = await axios.post(`http://13.201.93.211/api/app/getcont/addcontent`,{title:title,content:content});
-      console.log("++++++++++++Content Generated sucessfully");
-      
+      if (tag === 1){
+      // const data = await axios.post(`http://13.201.93.211/api/app/getcont/addcontent`,{title:title,content:content});
+      const data = await axios.post(`https://knowledgepoll.site/api/app/getcont/addreactcontent`,{title:title,content:content});
+      // const data = await axios.post(`http://localhost:8000/app/getcont/addcontent`,{title:title,content:content});
+      //console.log("++++++++++++Content Generated sucessfully");
+      setContent("");
+      setTitle("");
+      navigate('/react');
+    } 
+    if (tag === 2){
+      const data = await axios.post(`https://knowledgepoll.site/api/app/getcont/addjavacontent`,{title:title,content:content});
+      setContent("");
+      setTitle("");
+      navigate('/java');
+
+    }else {
+      const data = await axios.post(`https://knowledgepoll.site/api/app/getcont/addcontent`,{title:title,content:content});
+      setContent("");
+      setTitle("");
+      navigate('/python');
+
+    }
+
     } catch (error) {
       console.log("Error",error)
       

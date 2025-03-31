@@ -16,6 +16,11 @@ import CommunityPricing from './assets/Components/Community/CommunityPricing/Com
 import CommunityAboutus from './assets/Components/Community/CommunityAboutus/CommunityAboutus.jsx';
 import CoursesPage from './assets/Components/CoursesPage/CoursesPage.jsx';
 import CourseContVideoPage from './assets/Components/CoursesPage/CourseContVideoPage/CourseContVideoPage.jsx';
+//import React from './assets/Components/ContentParts/React/React.jsx';
+import Reacts from './assets/Components/ContentParts/React/React.jsx';
+import Java from './assets/Components/ContentParts/Java/Java.jsx';
+import Register from './assets/Components/Register/Register.jsx';
+import Login from './assets/Components/Login/Login.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -25,6 +30,8 @@ createRoot(document.getElementById('root')).render(
   <Routes>
   <Route path='/' element={<App />}/>
   <Route path='/python' element={<Python/>}/>
+  <Route path='/react' element={<Reacts/>}/>
+  <Route path='/java' element={<Java/>}/>
   <Route path='/writeearn' element = {<WriteEarn/>}/>
   <Route path='/aicont' element={<AIContentGenerationPage/>}/>
   <Route path='/community' element={<Community/>}/>
@@ -34,6 +41,8 @@ createRoot(document.getElementById('root')).render(
   <Route path='/community/aboutus' element={<CommunityAboutus/>}/>
   <Route path='/course/allcourses' element={<CoursesPage/>}/>
   <Route path='/course/coursedetail' element={<CourseContVideoPage/>}/>
+  <Route path='/register' element={<Register/>}/>
+  <Route path='/login' element={<Login/>}/>
     {/* <App /> */}
     </Routes>
   </BrowserRouter>

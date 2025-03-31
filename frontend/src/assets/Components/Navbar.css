@@ -22,6 +22,14 @@
     gap: 2rem;
      
 }
+.navhome2 a{
+    text-decoration: none;
+    color: black;
+}
+.navhome2 a:hover{
+    color: blue;
+
+}
 .navhome2 li{
     padding: 0.3rem;
     cursor: pointer;
@@ -52,4 +60,8 @@
 }
 .navdropshow{
     display: block;
+}
+.user-email{
+    font-size: 1.2rem;
+   
 }

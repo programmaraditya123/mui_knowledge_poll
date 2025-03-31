@@ -111,7 +111,7 @@ const Python = () => {
 
   const getContent = async () => {
     try {
-      const data = await axios.get(`http://13.201.93.211/api/app/getcont/content`, { params: { title: searchtitle } });
+      const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/content`, { params: { title: searchtitle } });
       setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
     } catch (error) {
       console.log("Error", error)

@@ -1,6 +1,6 @@
 const express = require('express');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const Article = require("../Models/ContentSchema");
+const {Article,React, Java} = require("../Models/ContentSchema");
 //import OpenAI from "openai";
 //const {OpenAI} = require('openai')
 require("dotenv").config();
@@ -109,6 +109,82 @@ const addContent = async (req,res) =>{
         
     }
 }
-module.exports = {addContent,getcontent,GenerateAIContent}
+
+//Conterollers of react add update content
+const getReactContent = async(req,res) =>{
+    //check content with prompt
+    try {
+       const {title} = req.query;
+       const existingcont = await React.find({title});
+       res.json(existingcont)
+    } catch (error) {
+       res.send("No content Avialbale")
+       // console.log("Error",error)
+        
+       
+    }
+}
+
+const addReactContent = async (req,res) =>{
+    try {
+        const {title,content} = req.body;
+        const data = await React.findOneAndUpdate(
+            {title:title},
+            {content:content},
+        {new:true,upsert:true})
+        res.status(201).send({
+            success:true,
+           message: data.createdAt ? "Article created successfully" : "Article updated successfully",
+        })
+    } catch (error) {
+        console.log('Error1',error)
+        
+    }
+}
+
+
+
+
+
+// contorller for java add and update JAVA title and content
+const getJavaContent = async(req,res) =>{
+    //check content with prompt
+    try {
+       const {title} = req.query;
+       const existingcont = await Java.find({title});
+       res.json(existingcont)
+    } catch (error) {
+       res.send("No content Avialbale")
+       // console.log("Error",error)
+        
+       
+    }
+}
+
+const addJavaContent = async (req,res) =>{
+    try {
+        const {title,content} = req.body;
+        const data = await Java.findOneAndUpdate(
+            {title:title},
+            {content:content},
+        {new:true,upsert:true})
+        res.status(201).send({
+            success:true,
+           message: data.createdAt ? "Article created successfully" : "Article updated successfully",
+        })
+    } catch (error) {
+        console.log('Error1',error)
+        
+    }
+}
+
+
+
+
+
+
+module.exports = {addContent,getcontent,GenerateAIContent,getReactContent,addReactContent,
+    getJavaContent,addJavaContent
+}
 // module.exports = {GenerateAIContent,getAIcontent,updatecontent,addContent,generatechatgpt}
 

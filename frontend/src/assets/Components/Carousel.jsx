@@ -117,10 +117,10 @@ function Carousel(props) {
             <NavLink to="/python"><h3>Python</h3></NavLink>
           </div>
           <div className="carouseldiv">
-          <h3>{props.b}</h3> 
+          <NavLink to='/react'><h3>{props.b}</h3></NavLink> 
           </div>
           <div className="carouseldiv">
-          <h3>{props.c}</h3> 
+          <NavLink to='/java'><h3>{props.c}</h3> </NavLink>
           </div>
           <div className="carouseldiv">
           <h3>{props.d}</h3> 
