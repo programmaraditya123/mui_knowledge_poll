@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import './ContentPage.css';
-import Carousel from '../Carousel';
+// import Carousel from '../Carousel';
+
+const Carousel = lazy(() => import('../Carousel'))
 
 const ContentPage = () => {
   return (
     <>
-
-
-
-      <Carousel b="Data Types" c="Constants" d="Comments" e="Sets" f="Lists" g="Tuple" h="Dictionary" i="Multithreading" />
+    <Suspense fallback={<div>Loading ...</div>}>
+    <Carousel b="Data Types" c="Constants" d="Comments" e="Sets" f="Lists" g="Tuple" h="Dictionary" i="Multithreading" />
+      </Suspense>
       <div className='disp-cont'>
         <div className='disp-cont-1'>
           <div className='disp-cont-items'>

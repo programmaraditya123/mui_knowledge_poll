@@ -3,8 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import './Carousel.css'
-//import { Link } from "react-router-dom";
-//import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { NavLink,Link } from "react-router";
 
  

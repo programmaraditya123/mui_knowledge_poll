@@ -1,14 +1,17 @@
-import React, { useEffect,useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-import Carousel from '../../Carousel';
+//import Carousel from '../../Carousel';
 import axios from 'axios';
 //import './Python.css';
-import { FaBars } from "react-icons/fa";
+//import { FaBars } from "react-icons/fa";
 import { useNavigate } from 'react-router';
+
+const Carousel = lazy(() => import('../../Carousel'))
+const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
 
 const Reacts = () => {
   const [cont, setCont] = useState("");
-  const [searchtitle, setSearchTitle] = useState(" ");
+  const [searchtitle, setSearchTitle] = useState("Basics of React");
   // console.log("++++++++++++", searchtitle);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
@@ -112,21 +115,7 @@ const Reacts = () => {
 
  
 
-  // const generateContent = async () =>{
-  //   try {
-  //     // searchtitle = "Write a detailed, plagiarism-free article about Introduction to Python in pure HTML and CSS, ensuring structured HTML5, unique prefixed CSS class names to avoid conflicts, fully responsive design, beginner-friendly explanations, real-world examples, and inline comments for clarity."
-
-  //     const content = await axios.post(`http://localhost:8000/app/getcont/generate`,{prompt:searchtitle});
-  //     //console.log("content generated succesfully",content)
-
-  //   } catch (error) {
-  //     console.log("Error",error)
-
-  //   }
-  // };
-  // useEffect(() =>{
-  //   generateContent();
-  // },[searchtitle])
+ 
 
   const navigate = useNavigate();
   const routerchange = (Title,tag) => {
@@ -171,8 +160,14 @@ const Reacts = () => {
 
   return (
     <>
+    <Suspense fallback={<div>Loading ...</div>}>
       <Carousel b="State Handling" c="Hooks" d="React Comments" e="Arrow Function" f="UseState" g="Props" h="React Router" i="Event Handling" />
-      <button className='btn-17' ><FaBars onClick={()=>setShowMenu(!showMenu)} /></button>
+      </Suspense>
+      <button className='btn-17' >
+      <Suspense fallback={null}>
+      <FaBars onClick={()=>setShowMenu(!showMenu)} />
+      </Suspense>
+      </button>
       <div className='disp-cont'>
         <div ref={menuRef} className={`disp-cont-1 ${showMenu ? "show":""}`}>
           <div className='disp-cont-items'>

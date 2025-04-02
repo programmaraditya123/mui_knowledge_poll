@@ -1,14 +1,19 @@
-import React, { useEffect,useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-import Carousel from '../../Carousel';
+//import Carousel from '../../Carousel';
 import axios from 'axios';
 import './Python.css';
-import { FaBars } from "react-icons/fa";
+//import { FaBars } from "react-icons/fa";
 import { useNavigate } from 'react-router';
+
+const Carousel = lazy(() => import('../../Carousel'))
+const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
+
+
 
 const Python = () => {
   const [cont, setCont] = useState("");
-  const [searchtitle, setSearchTitle] = useState(" ");
+  const [searchtitle, setSearchTitle] = useState("Introduction to Python");
   // console.log("++++++++++++", searchtitle);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
@@ -82,21 +87,7 @@ const Python = () => {
     "Sending Emails with Python",
     "Working with PDFs & Excel Files"
   ];
-  // const generateContent = async () =>{
-  //   try {
-  //     // searchtitle = "Write a detailed, plagiarism-free article about Introduction to Python in pure HTML and CSS, ensuring structured HTML5, unique prefixed CSS class names to avoid conflicts, fully responsive design, beginner-friendly explanations, real-world examples, and inline comments for clarity."
-
-  //     const content = await axios.post(`http://localhost:8000/app/getcont/generate`,{prompt:searchtitle});
-  //     //console.log("content generated succesfully",content)
-
-  //   } catch (error) {
-  //     console.log("Error",error)
-
-  //   }
-  // };
-  // useEffect(() =>{
-  //   generateContent();
-  // },[searchtitle])
+   
 
   const navigate = useNavigate();
   const routerchange = (Title) => {
@@ -140,8 +131,12 @@ const Python = () => {
 
   return (
     <>
+    <Suspense fallback={<div>Loading ...</div>}>
       <Carousel b="Data Types" c="Constants" d="Comments" e="Sets" f="Lists" g="Tuple" h="Dictionary" i="Multithreading" />
-      <button className='btn-17' ><FaBars onClick={()=>setShowMenu(!showMenu)} /></button>
+      </Suspense>
+      <button className='btn-17' >
+      <Suspense fallback={null}><FaBars onClick={()=>setShowMenu(!showMenu)} />
+      </Suspense></button>
       <div className='disp-cont'>
         <div ref={menuRef} className={`disp-cont-1 ${showMenu ? "show":""}`}>
           <div className='disp-cont-items'>
@@ -162,8 +157,7 @@ const Python = () => {
           <button className='btn-18' onClick={() => routerchange(searchtitle)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont)}>Modify Content</button>
           }
 
-          {/* <p>Nothing to show here</p> */}
-          {/* <button className='btn-13' onClick={generateContent}>Click to Generate Content</button> */}
+           
 
           <div className='disp-cont-btns'>
             <button className='btn-12'>Previous Topic Topic Name</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './CommunityHomeBody.css';
-//import d from '../../../../assets/Images/d.webp';
+ 
 
 
 const CommunityHomeBody = () => {
@@ -12,7 +12,7 @@ const CommunityHomeBody = () => {
       <p className='cbody2p'>We make it easy for you to meet people with a community resources that is updated <br/>
       regularly with new community members , podcasts , conferences , and meetups.</p>
       <div className='cbodyimg'>
-      <img src="https://cdn.dribbble.com/userupload/17023400/file/original-805b55f9eeb593fe17232386d181e1db.jpg?resize=1600x1200&vertical=center" alt ="commmunity image"/>
+      {/* <img src="https://cdn.dribbble.com/userupload/17023400/file/original-805b55f9eeb593fe17232386d181e1db.jpg?resize=1600x1200&vertical=center" alt ="commmunity image"/> */}
 
       </div>
       <div className='cbody3'>

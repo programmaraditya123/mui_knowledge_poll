@@ -13,8 +13,7 @@ const AIContentGenerationPage = () => {
   // console.log("-----------",output)
   console.log("++++++++++++",input)
    
-  // const ChatBox = ({ messages }) => {
-  //   const chatRef = useRef(null);
+   
     
   const generateContent = async () =>{
     setMessages([...messages,{text:input,sender:'user'}]);
@@ -32,13 +31,7 @@ const AIContentGenerationPage = () => {
     }
   };
 
-  // const sendMessage = async () => {
-  //   setMessages([...messages,{text:input,sender:'user'}]);
-  //   setInput("");
-  //   setTimeout(() => {
-  //     setMessages((prev) =>[...prev,{text:output,sender:'ai'}]);
-  //   },1000)
-  // };
+  
 
   
    

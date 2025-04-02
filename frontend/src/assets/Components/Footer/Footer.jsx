@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import './Footer.css';
-import {FaTwitter} from "react-icons/fa";
-import {FaLinkedin} from "react-icons/fa";
-import {FaInstagramSquare} from "react-icons/fa";
-import {FaFacebook} from "react-icons/fa";
-import {FaGooglePlay} from "react-icons/fa";
-import {SiGmail} from "react-icons/si";
-import { AiFillApple } from "react-icons/ai";
+// import {FaTwitter} from "react-icons/fa";
+// import {FaLinkedin} from "react-icons/fa";
+// import {FaInstagramSquare} from "react-icons/fa";
+// import {FaFacebook} from "react-icons/fa";
+// import {FaGooglePlay} from "react-icons/fa";
+// import {SiGmail} from "react-icons/si";
+// import { AiFillApple } from "react-icons/ai";
+
+const FaTwitter = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaTwitter })));
+const FaLinkedin = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaLinkedin })));
+const FaInstagramSquare = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaInstagramSquare})));
+const FaFacebook = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaGooglePlay })));
+const FaGooglePlay = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaPeopleLine })));
+const SiGmail = lazy(() => import('react-icons/si').then(module => ({ default: module.SiGmail })));
+const AiFillApple = lazy(() => import('react-icons/ai').then(module => ({ default: module.AiFillApple })));
+
 
 const Footer = () => {
     const[showcat,setShowCat] = useState(0)

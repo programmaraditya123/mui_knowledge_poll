@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import './HomePage.css'
 import PrimarySearchAppBar from '../assets/Components/Navbar'
 import Searcharea from '../assets/Components/Searcharea'
-import TextCarousel from '../assets/Components/Carousel'
-//import Features from '../assets/Components/Features'
+// import TextCarousel from '../assets/Components/Carousel'
 import Cards from '../assets/Components/Cards';
-import EmblaCarousel from '../assets/Components/EmblaCarousel/EmblaCarousel';
-import a from '../assets/Images/a.jpeg'
-import b from '../assets/Images/b.jpeg'
-import c from '../assets/Images/c.jpeg'
-import d from '../assets/Images/b.jpeg'
+// import EmblaCarousel from '../assets/Components/EmblaCarousel/EmblaCarousel';
+// import a from '../assets/Images/a.jpeg'
+// import b from '../assets/Images/b.jpeg'
+// import c from '../assets/Images/c.jpeg'
+// import d from '../assets/Images/b.jpeg'
 import SmallCards from '../assets/Components/SmallCards/SmallCards';
 import LargeCards from '../assets/Components/LargeCards/LargeCards';
-import Footer from '../assets/Components/Footer/Footer';
 import { useNavigate } from 'react-router';
+
+const TextCarousel = lazy(() => import('../assets/Components/Carousel'))
+const EmblaCarousel = lazy(() => import('../assets/Components/EmblaCarousel/EmblaCarousel'))
+const a = lazy(() => import('../assets/Images/a.jpeg'))
+const b = lazy(() => import('../assets/Images/b.jpeg'))
+const c = lazy(() => import('../assets/Images/c.jpeg'))
+const d = lazy(() => import('../assets/Images/b.jpeg'))
 const SLIDES = [a,b,c,d]
 
 const OPTIONS = { loop: true }
@@ -25,6 +30,7 @@ const HomePage = () => {
     navigate(path)
   };
   return (
+    // <Suspense fallback={<div>Loading ...</div>}>
     <>
     {/* <Features/> */}
     <div className='searchnav'>
@@ -124,6 +130,7 @@ const HomePage = () => {
       
      
     </>
+    // </Suspense>
   )
 }
 

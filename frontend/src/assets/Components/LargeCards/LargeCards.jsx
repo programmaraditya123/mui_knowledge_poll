@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import './LargeCards.css';
-import { GoArrowRight } from "react-icons/go";
+//import { GoArrowRight } from "react-icons/go";
+const GoArrowRight = lazy(() => import('react-icons/go').then(module => ({ default: module.GoArrowRight })));
+
 
 
 const LargeCards = (props) => {

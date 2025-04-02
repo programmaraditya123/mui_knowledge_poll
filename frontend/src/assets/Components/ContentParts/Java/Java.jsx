@@ -1,15 +1,18 @@
-import React, { useEffect,useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-import Carousel from '../../Carousel';
+//import Carousel from '../../Carousel';
 import axios from 'axios';
-//import './Python.css';
-import { FaBars } from "react-icons/fa";
+//import { FaBars } from "react-icons/fa";
 import { useNavigate } from 'react-router';
+const Carousel = lazy(() => import('../../Carousel'));
+const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
+
+
 
 const Java = () => {
   const [cont, setCont] = useState("");
-  const [searchtitle, setSearchTitle] = useState(" ");
-  // console.log("++++++++++++", searchtitle);
+  const [searchtitle, setSearchTitle] = useState("Introduction to Java");
+  console.log("++++++++++++", searchtitle);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   // console.log("------------",cont)
@@ -72,21 +75,7 @@ const java_topics = [
 
  
 
-  // const generateContent = async () =>{
-  //   try {
-  //     // searchtitle = "Write a detailed, plagiarism-free article about Introduction to Python in pure HTML and CSS, ensuring structured HTML5, unique prefixed CSS class names to avoid conflicts, fully responsive design, beginner-friendly explanations, real-world examples, and inline comments for clarity."
-
-  //     const content = await axios.post(`http://localhost:8000/app/getcont/generate`,{prompt:searchtitle});
-  //     //console.log("content generated succesfully",content)
-
-  //   } catch (error) {
-  //     console.log("Error",error)
-
-  //   }
-  // };
-  // useEffect(() =>{
-  //   generateContent();
-  // },[searchtitle])
+   
 
   const navigate = useNavigate();
   const routerchange = (Title,tag) => {
@@ -101,9 +90,8 @@ const java_topics = [
 
   const getContent = async () => {
     try {
-    //   const data = await axios.get(`http://13.201.93.211/api/app/getcont/getreactcontent`, { params: { title: searchtitle } });
-    //   const data = await axios.get(`http://localhost:8000/app/getcont/getreactcontent`, { params: { title: searchtitle } });
-    const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/getjavacontent`, { params: { title: searchtitle } });
+      //const data = await axios.get(`http://localhost:8000/app/getcont/getreactcontent`, { params: { title: searchtitle } });
+     const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/getjavacontent`, { params: { title: searchtitle } });
       setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
     } catch (error) {
       console.log("Error", error)
@@ -132,8 +120,14 @@ const java_topics = [
 
   return (
     <>
+    <Suspense fallback={<div>Loading ...</div>}>
       <Carousel b="Java" c="Java installation" d="Java Variables" e="Java functions" f="UseState" g="Props" h="React Router" i="Event Handling" />
-      <button className='btn-17' ><FaBars onClick={()=>setShowMenu(!showMenu)} /></button>
+      </Suspense>
+      <button className='btn-17' >
+      <Suspense fallback={null}>
+      <FaBars onClick={()=>setShowMenu(!showMenu)} />
+      </Suspense></button>
+      
       <div className='disp-cont'>
         <div ref={menuRef} className={`disp-cont-1 ${showMenu ? "show":""}`}>
           <div className='disp-cont-items'>

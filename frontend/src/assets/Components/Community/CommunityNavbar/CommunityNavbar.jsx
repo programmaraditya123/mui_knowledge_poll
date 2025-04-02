@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import './CommunityNavbar.css';
-//import { IoLogoSass } from "react-icons/io";
-import { RiDashboardLine } from "react-icons/ri";
-import { FaPeopleLine } from "react-icons/fa6";
-import {NavLink} from 'react-router';
+//import { FaPeopleLine } from "react-icons/fa6";
+import {NavLink} from 'react-router-dom';
+const FaPeopleLine = lazy(() => import('react-icons/fa6').then(module => ({ default: module.FaPeopleLine })));
 
 const CommunityNavbar = () => {
   return (
+    <Suspense fallback={null}>
     <div className='cnav1'>
        <div className='cnav'>
        {/* <li><IoLogoSass /></li> */}
@@ -24,6 +24,7 @@ const CommunityNavbar = () => {
         <button className='btn-2'>Get Started</button>
        </div>
     </div>
+    </Suspense>
   )
 }
 

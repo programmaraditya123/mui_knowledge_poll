@@ -50,10 +50,7 @@ window.onclick = function(event) {
   const addcont = async () =>{
     try {
       if (tag === 1){
-      // const data = await axios.post(`http://13.201.93.211/api/app/getcont/addcontent`,{title:title,content:content});
       const data = await axios.post(`https://knowledgepoll.site/api/app/getcont/addreactcontent`,{title:title,content:content});
-      // const data = await axios.post(`http://localhost:8000/app/getcont/addcontent`,{title:title,content:content});
-      //console.log("++++++++++++Content Generated sucessfully");
       setContent("");
       setTitle("");
       navigate('/react');
@@ -103,9 +100,7 @@ window.onclick = function(event) {
           <li>Sign Out</li>
     </div>
     </div>
-    {/* <div className='navbarsearch'>
-      <input type='text' placeholder='Seacrh here'/>
-    </div> */}
+   
     </div>
       <div className='writepart'>
         <div className='writepart1'>
@@ -126,10 +121,7 @@ window.onclick = function(event) {
   onChange={(e) => setTitle(e.target.value)} 
   placeholder="Enter title here" 
 />
-          {/* <input onChange={(e)=>{setTitle(e.target.value)}} placeholder='enter title here'/> */}
-          {/* {Title?.trim() === "" ? (<input onChange={(e)=>{setTitle(e.target.value)}} placeholder='enter title chnage here'/>) :
-          (<input value={title} placeholder='enter title here'/>)} */}
-          {/* {Title?.trim() === "" ? (<input value={title} placeholder='enter title here'/>) : (<input onChange={(e)=>{setTitle(e.target.value)}} placeholder='enter title chnage here'/>)} */}
+           
           <JoditEditor
             ref={editor}
             value={content}

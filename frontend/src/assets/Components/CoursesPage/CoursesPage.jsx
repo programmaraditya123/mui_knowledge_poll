@@ -1,8 +1,11 @@
-import React from 'react';
-import Cards from '../Cards';
+import React, { lazy, Suspense } from 'react';
+//import Cards from '../Cards';
 import './CoursesPage.css';
-import CoursePageNavbar from './CoursePageNavbar/CoursePageNavbar';
+//import CoursePageNavbar from './CoursePageNavbar/CoursePageNavbar';
 import { useNavigate } from 'react-router';
+
+const Cards = lazy(() => import('../Cards'));
+const CoursePageNavbar = lazy(() => import('./CoursePageNavbar/CoursePageNavbar'))
 
 const CoursesPage = () => {
   const navigate = useNavigate();
@@ -11,6 +14,7 @@ const CoursesPage = () => {
     navigate("/course/coursedetail")
   };
   return (
+    <Suspense fallback={<div>Loading ...</div>}>
     <div className='cr'>
     <div className='coursenavbar'><CoursePageNavbar/></div>
     <h1>Machine Learning</h1>
@@ -59,6 +63,7 @@ const CoursesPage = () => {
       
      </div>
     </div>
+    </Suspense>
   )
 }
 
