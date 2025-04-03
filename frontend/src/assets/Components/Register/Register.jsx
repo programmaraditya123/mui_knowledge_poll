@@ -15,7 +15,7 @@ const Register = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
-            const res = await axios.post(`https://knowledgepoll.site/api/app/userauth/register`,{name,email,password,phone,address});
+            const res = await axios.post(`/api/app/userauth/register`,{name,email,password,phone,address});
             if(res && res.data.success){
                 alert("Registred Succesfully");
                 navigate('/login')

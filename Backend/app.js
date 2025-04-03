@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 const axios = require('axios');
 const bodyparser = require('body-parser');
 const {connectDB,getBucket} = require('./config/db');
@@ -19,7 +19,12 @@ require("dotenv").config();
 
 const app = express()
 
-app.use(cors());
+const cors = require("cors");
+app.use(cors({
+    origin: "http://localhost:5173", // Allow only your frontend
+    credentials: true
+}));
+
 app.use(express.json());
 
 connectDB();

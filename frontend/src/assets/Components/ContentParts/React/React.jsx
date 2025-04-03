@@ -130,7 +130,7 @@ const Reacts = () => {
 
   const getContent = async () => {
     try {
-       const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/getreactcontent`, { params: { title: searchtitle } });
+       const data = await axios.get(`/api/app/getcont/getreactcontent`, { params: { title: searchtitle } });
       // const data = await axios.get(`http://localhost:8000/app/getcont/getreactcontent`, { params: { title: searchtitle } });
       setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
     } catch (error) {

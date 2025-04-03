@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`https://knowledgepoll.site/api/app/userauth/login`,{email,password});
+            const res = await axios.post(`/api/app/userauth/login`,{email,password});
             if (res && res.data.success){
                 alert(res.data.message);
                 localStorage.setItem("token",JSON.stringify(res.data.token));

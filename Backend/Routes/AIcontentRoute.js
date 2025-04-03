@@ -7,6 +7,7 @@ const { GenerateAIContent,getcontent, updatecontent, addContent ,
     getJavaContent,
     addJavaContent
 } = require('../controllers/GenerateContent');
+const {requireSignIn} = require('../middlewares/authMiddleware');
 
 const router = express.Router()
 
@@ -23,7 +24,8 @@ router.get('/content',getcontent)
 
 // router.put('/updatecont',updatecontent)
 
-router.post('/addcontent',addContent)
+router.post('/addcontent',requireSignIn,addContent);
+//router.post('/addcontent',addContent);
 
 
 
@@ -32,13 +34,13 @@ router.post('/addcontent',addContent)
 
 router.get('/getreactcontent',getReactContent);
 
-router.post('/addreactcontent',addReactContent);
+router.post('/addreactcontent',requireSignIn,addReactContent);
 
 
 // add and update JAVA title content
 
 router.get('/getjavacontent',getJavaContent);
 
-router.post('/addjavacontent',addJavaContent);
+router.post('/addjavacontent',requireSignIn,addJavaContent);
 
 module.exports = router;

@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
-// const userLogin = require('./Models/userLoginModel');
-// const userLogin = require("../Models/userLoginModel")
-const {userLogin} = require("../Models/userLoginModel");
+const userLogin = require("../Models/userLoginModel");
+require('dotenv').config();
 
 const requireSignIn = async (req,res,next) => {
+    console.log("Middleware Executed")
     try {
-        const token = req.header("Authorization");
+        let token = req.header("Authorization");
 
         if(!token){
             return res.status(401).json({message:"token is not present"});
@@ -14,15 +14,27 @@ const requireSignIn = async (req,res,next) => {
         if (token.startsWith("Bearer ")){
             token = token.slice(7);
         };
+ 
 
         const decode = jwt.verify(token,process.env.JWT_SECRET);
         req.user = decode;
-        //console.log("1111111111",decode)
+        // console.log("1111111111",decode)
+
+         
+        const user = await userLogin.findById(decode._id).select("-password");  
+        console.log("+++++++++++",user)
+         
+
+        if (!user) {
+            return res.status(401).json({ message: "User not found" });
+        }
+        // req.user = user;
+        
         
         next();
         
     } catch (error) {
-        console.log(error)
+        return res.status(401).json({ message: "Invalid or expired token" });
         
     }
 }

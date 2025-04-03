@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import JoditEditor, { Jodit } from 'jodit-react';
 import './Write&Earn.css';
 import axios from 'axios';
@@ -11,32 +11,28 @@ const WriteEarn = ({ placeholder }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const editor = useRef(null);
-  //const [cdata,setCData] = useState("")
-  //console.log('------------',title)
   const Title = location.state?.Title;
   const Content = location.state?.Content;
   const tag = location.state?.tag;
   const[title,setTitle] = useState(Title);
   const [content, setContent] = useState(Content);
-  //console.log("***********",title)
   console.log('...........',tag)
 
-  const myfunc = () => {
-    document.getElementById("mydropwe").classList.toggle("show");
-  }
-  // Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.btn-16')) {
-    var dropdowns = document.getElementsByClassName("dropdown-features");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.matches('.btn-16')) {
+        document.getElementById("mydropwe")?.classList.remove("show");
       }
+    };
+  
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+
+    const getToken = () =>{
+      return localStorage.getItem('token');
     }
-  }
-}
 
   const config = useMemo(
     () => ({
@@ -50,27 +46,49 @@ window.onclick = function(event) {
   const addcont = async () =>{
     try {
       if (tag === 1){
-      const data = await axios.post(`https://knowledgepoll.site/api/app/getcont/addreactcontent`,{title:title,content:content});
+      const token = getToken();
+      if(token){
+      const data = await axios.post(`/api/app/getcont/addreactcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
       setContent("");
       setTitle("");
       navigate('/react');
+      }else{
+        alert("User Must be loggedin to post content");
+        navigate("/react");
+      }
     } 
     if (tag === 2){
-      const data = await axios.post(`https://knowledgepoll.site/api/app/getcont/addjavacontent`,{title:title,content:content});
+      const token = getToken();
+      if(token){
+      const data = await axios.post(`/api/app/getcont/addjavacontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
       setContent("");
       setTitle("");
       navigate('/java');
+      }else{
+        alert("User Must be loggedin to post content")
+        navigate("/java")
+      }
 
     }else {
-      const data = await axios.post(`https://knowledgepoll.site/api/app/getcont/addcontent`,{title:title,content:content});
+      const token = getToken();
+      if(token){
+      const data = await axios.post(`/app/getcont/addcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
+      //const data = await axios.post(`https://localhost:8000/app/getcont/addcontent`,{title:title,content:content});
+      //const data = await axios.post(`/api/app/getcont/addcontent`,{title:title,content:content});
       setContent("");
       setTitle("");
       navigate('/python');
-
+      }else{
+        // console.log("Error++++++++++++",data)
+        alert("User Must be loggedin to post content")
+        navigate('/login')
+      }
     }
 
     } catch (error) {
-      console.log("Error",error)
+      console.log("Error----------",error)
+      // alert("User Must be loggedin to post content")
+      // navigate('/login')
       
     }
   }
@@ -84,7 +102,7 @@ window.onclick = function(event) {
     <div className='navbartop'>
     <div className='drop-features'>
     <div className='btninput'>
-    <button className='btn-16' onClick={myfunc}><FaBars /></button>
+    <button className='btn-16'  ><FaBars /></button>
     <input onChange={(e)=>{setTitle(e.target.value)}} placeholder='enter title here'/>
 
     </div>

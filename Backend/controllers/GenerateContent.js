@@ -102,10 +102,11 @@ const addContent = async (req,res) =>{
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
-           message: data.createdAt ? "Article created successfully" : "Article updated successfully",
+           message: data.upserted ? "Article created successfully" : "Article updated successfully",
         })
     } catch (error) {
         console.log('Error1',error)
+        res.status(500).json({ success: false, message: "Internal Server Error", error });
         
     }
 }

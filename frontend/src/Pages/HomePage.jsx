@@ -1,24 +1,29 @@
 import React, { lazy, Suspense } from 'react';
 import './HomePage.css'
-import PrimarySearchAppBar from '../assets/Components/Navbar'
-import Searcharea from '../assets/Components/Searcharea'
+//import PrimarySearchAppBar from '../assets/Components/Navbar'
+//import Searcharea from '../assets/Components/Searcharea'
 // import TextCarousel from '../assets/Components/Carousel'
-import Cards from '../assets/Components/Cards';
+//import Cards from '../assets/Components/Cards';
 // import EmblaCarousel from '../assets/Components/EmblaCarousel/EmblaCarousel';
-// import a from '../assets/Images/a.jpeg'
-// import b from '../assets/Images/b.jpeg'
-// import c from '../assets/Images/c.jpeg'
-// import d from '../assets/Images/b.jpeg'
-import SmallCards from '../assets/Components/SmallCards/SmallCards';
-import LargeCards from '../assets/Components/LargeCards/LargeCards';
+import a from '../assets/Images/a.jpeg'
+import b from '../assets/Images/b.jpeg'
+import c from '../assets/Images/c.jpeg'
+import d from '../assets/Images/b.jpeg'
+//import SmallCards from '../assets/Components/SmallCards/SmallCards';
+//import LargeCards from '../assets/Components/LargeCards/LargeCards';
 import { useNavigate } from 'react-router';
 
 const TextCarousel = lazy(() => import('../assets/Components/Carousel'))
 const EmblaCarousel = lazy(() => import('../assets/Components/EmblaCarousel/EmblaCarousel'))
-const a = lazy(() => import('../assets/Images/a.jpeg'))
-const b = lazy(() => import('../assets/Images/b.jpeg'))
-const c = lazy(() => import('../assets/Images/c.jpeg'))
-const d = lazy(() => import('../assets/Images/b.jpeg'))
+// const a = lazy(() => import('../assets/Images/a.jpeg'))
+// const b = lazy(() => import('../assets/Images/b.jpeg'))
+// const c = lazy(() => import('../assets/Images/c.jpeg'))
+// const d = lazy(() => import('../assets/Images/b.jpeg'))
+const SmallCards = lazy(() => import('../assets/Components/SmallCards/SmallCards'))
+const LargeCards = lazy(() => import('../assets/Components/LargeCards/LargeCards'))
+const Cards = lazy(() => import('../assets/Components/Cards'))
+const Searcharea = lazy(() => import('../assets/Components/Searcharea'));
+const PrimarySearchAppBar = lazy(() => import('../assets/Components/Navbar'))
 const SLIDES = [a,b,c,d]
 
 const OPTIONS = { loop: true }
