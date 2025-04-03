@@ -3,6 +3,7 @@ import "./Register.css";
 import { NavLink } from "react-router";
 import { useNavigate } from "react-router";
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
 
 const Register = () => {
     const[name,setName] = useState("");
@@ -15,7 +16,7 @@ const Register = () => {
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try {
-            const res = await axios.post(`/api/app/userauth/register`,{name,email,password,phone,address});
+            const res = await axios.post(`${BASE_URL}/app/userauth/register`,{name,email,password,phone,address});
             if(res && res.data.success){
                 alert("Registred Succesfully");
                 navigate('/login')

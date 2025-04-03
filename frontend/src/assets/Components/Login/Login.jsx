@@ -3,6 +3,8 @@ import "./Login.css";
 import { NavLink } from "react-router";
 import { useNavigate } from "react-router";
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+
 
 const Login = () => {
     const[email,setEmail] = useState("");
@@ -12,7 +14,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`/api/app/userauth/login`,{email,password});
+            const res = await axios.post(`${BASE_URL}/app/userauth/login`,{email,password});
             if (res && res.data.success){
                 alert(res.data.message);
                 localStorage.setItem("token",JSON.stringify(res.data.token));

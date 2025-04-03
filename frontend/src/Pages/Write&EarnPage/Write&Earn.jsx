@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FaBars } from "react-icons/fa";
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
 
 
 const WriteEarn = ({ placeholder }) => {
@@ -48,7 +49,7 @@ const WriteEarn = ({ placeholder }) => {
       if (tag === 1){
       const token = getToken();
       if(token){
-      const data = await axios.post(`/api/app/getcont/addreactcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
+      const data = await axios.post(`${BASE_URL}/app/getcont/addreactcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
       setContent("");
       setTitle("");
       navigate('/react');
@@ -60,7 +61,7 @@ const WriteEarn = ({ placeholder }) => {
     if (tag === 2){
       const token = getToken();
       if(token){
-      const data = await axios.post(`/api/app/getcont/addjavacontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
+      const data = await axios.post(`${BASE_URL}/app/getcont/addjavacontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
       setContent("");
       setTitle("");
       navigate('/java');
@@ -72,7 +73,7 @@ const WriteEarn = ({ placeholder }) => {
     }else {
       const token = getToken();
       if(token){
-      const data = await axios.post(`/app/getcont/addcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
+      const data = await axios.post(`${BASE_URL}/getcont/addcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
       //const data = await axios.post(`https://localhost:8000/app/getcont/addcontent`,{title:title,content:content});
       //const data = await axios.post(`/api/app/getcont/addcontent`,{title:title,content:content});
       setContent("");

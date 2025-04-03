@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
 
 
 
@@ -102,7 +103,7 @@ const Python = () => {
 
   const getContent = async () => {
     try {
-      const data = await axios.get(`/api/app/getcont/content`, { params: { title: searchtitle } });
+      const data = await axios.get(`${BASE_URL}/app/getcont/content`, { params: { title: searchtitle } });
       // const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/content`, { params: { title: searchtitle } });
       setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
     } catch (error) {
