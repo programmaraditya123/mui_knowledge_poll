@@ -39,10 +39,10 @@ jobs:
 
     - name: Start or Restart Backend with PM2
       run: |
-        if pm2 list | grep -q Backend; then
-          pm2 restart Backend
-        else
+          export PORT=8080
+          pm2 delete Backend || true
+       
           pm2 start app.js --name Backend
-        fi
+       
       working-directory: Backend
 
