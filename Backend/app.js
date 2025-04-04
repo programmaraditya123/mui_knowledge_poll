@@ -16,21 +16,26 @@ const path = require('path');
 const Course = require('./Models/CourseModel');
 require("dotenv").config();
 
-const app = express()
+const app = express();
+
 
 const cors = require('cors');
-
-const allowedOrigins = ['http://localhost:5173', 'https://knowledgepoll.site'];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, origin);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://main.d2jgjuq5es9kag.amplifyapp.com',
+    'https://knowledgepoll.site'
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
     }
-  }
-}));
+  }));
+  
 
   
 
