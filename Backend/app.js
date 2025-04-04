@@ -1,5 +1,4 @@
 const express = require('express');
-//const cors = require('cors');
 const axios = require('axios');
 const bodyparser = require('body-parser');
 const {connectDB,getBucket} = require('./config/db');
@@ -19,12 +18,20 @@ require("dotenv").config();
 
 const app = express()
 
-const cors = require("cors");
+const cors = require('cors');
+
+const allowedOrigins = ['http://localhost:5173', 'https://knowledgepoll.site'];
+
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://knowledgepoll.site'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-  }));
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, origin);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
   
 
 app.use(express.json());
