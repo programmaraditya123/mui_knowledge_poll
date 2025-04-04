@@ -21,9 +21,11 @@ const app = express()
 
 const cors = require("cors");
 app.use(cors({
-    origin: "http://localhost:5173", // Allow only your frontend
-    credentials: true
-}));
+    origin: '*', // Allow all origins (for testing)
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
+  
 
 app.use(express.json());
 
@@ -98,7 +100,7 @@ app.post('/upload',upload.single('video'),(req,res) => {
 
 
 
-PORT = process.env.PORT || 8000;
+PORT = process.env.PORT || 8080;
 //console.log(PORT)
 
 

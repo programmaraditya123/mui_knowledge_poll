@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 const Carousel = lazy(() => import('../../Carousel'));
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 
