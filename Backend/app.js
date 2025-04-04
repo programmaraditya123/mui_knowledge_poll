@@ -21,9 +21,9 @@ const app = express()
 
 const cors = require("cors");
 app.use(cors({
-    origin: '*', // Allow all origins (for testing)
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: ['http://localhost:5173', 'https://knowledgepoll.site'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
   }));
   
 

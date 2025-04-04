@@ -24,8 +24,8 @@ router.get('/content',getcontent)
 
 // router.put('/updatecont',updatecontent)
 
-router.post('/addcontent',requireSignIn,addContent);
-//router.post('/addcontent',addContent);
+// router.post('/addcontent',requireSignIn,addContent);
+router.post('/addcontent',addContent);
 
 
 
@@ -34,13 +34,15 @@ router.post('/addcontent',requireSignIn,addContent);
 
 router.get('/getreactcontent',getReactContent);
 
-router.post('/addreactcontent',requireSignIn,addReactContent);
+router.post('/addreactcontent',addReactContent);
+// router.post('/addreactcontent',requireSignIn,addReactContent);
 
 
 // add and update JAVA title content
 
 router.get('/getjavacontent',getJavaContent);
 
-router.post('/addjavacontent',requireSignIn,addJavaContent);
+router.post('/addjavacontent',addJavaContent);
+// router.post('/addjavacontent',requireSignIn,addJavaContent);
 
 module.exports = router;
