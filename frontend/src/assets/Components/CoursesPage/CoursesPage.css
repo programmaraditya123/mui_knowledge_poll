@@ -9,3 +9,7 @@
     text-align: center;
     background-color: aqua;
 }
+.carding{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}

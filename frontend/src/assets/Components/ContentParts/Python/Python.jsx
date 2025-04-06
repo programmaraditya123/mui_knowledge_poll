@@ -5,6 +5,7 @@ import axios from 'axios';
 import './Python.css';
 //import { FaBars } from "react-icons/fa";
 import { useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
 
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
@@ -14,12 +15,15 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Python = () => {
   const [cont, setCont] = useState("");
-  const [searchtitle, setSearchTitle] = useState("Introduction to Python");
+  const location = useLocation();
+  const title = location.state?.Title;
+  const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Introduction to Python" : title);
   // console.log("++++++++++++", searchtitle);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   // console.log("------------",cont)
-  console.log("0000000000",BASE_URL)
+  // console.log("2222222222",title)
+   
 
   const pythonTopics = [
     "Introduction to Python",
@@ -92,18 +96,18 @@ const Python = () => {
    
 
   const navigate = useNavigate();
-  const routerchange = (Title) => {
+  const routerchange = (Title,tag) => {
     const path = "/writeearn"
-    navigate(path,{state:{Title}});
+    navigate(path,{state:{Title,tag}});
   }
-  const routerchange1 = (Title,Content) => {
+  const routerchange1 = (Title,Content,tag) => {
     const path = "/writeearn"
-    navigate(path,{state:{Title,Content}})
+    navigate(path,{state:{Title,Content,tag}})
   }
   // http://13.201.93.211/api/home
 
   const getContent = async () => {
-    console.log("Fetching from",`${BASE_URL}/app/getcont/content`)
+    // console.log("Fetching from",`${BASE_URL}/app/getcont/content`)
     try {
       const data = await axios.get(`${BASE_URL}/app/getcont/content`, { params: { title: searchtitle } });
       //const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/content`, { params: { title: searchtitle } });
@@ -158,7 +162,7 @@ const Python = () => {
 
           <div dangerouslySetInnerHTML={{ __html: cont }} />
           {cont?.trim() === `${searchtitle} contetnt not available`.trim() ?  
-          <button className='btn-18' onClick={() => routerchange(searchtitle)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont)}>Modify Content</button>
+          <button className='btn-18' onClick={() => routerchange(searchtitle,0)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont,0)}>Modify Content</button>
           }
 
            

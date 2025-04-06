@@ -7,13 +7,16 @@ import { useNavigate } from 'react-router';
 const Carousel = lazy(() => import('../../Carousel'));
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { useLocation } from 'react-router';
 
 
 
 const Java = () => {
   const [cont, setCont] = useState("");
-  const [searchtitle, setSearchTitle] = useState("Introduction to Java");
-  console.log("++++++++++++", searchtitle);
+  const location = useLocation();
+  const title = location.state?.Title;
+  const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Introduction to Java" : title);
+  //console.log("++++++++++++", searchtitle);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   // console.log("------------",cont)

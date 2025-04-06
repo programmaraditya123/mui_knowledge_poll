@@ -5,6 +5,7 @@ import axios from 'axios';
 //import './Python.css';
 //import { FaBars } from "react-icons/fa";
 import { useNavigate } from 'react-router';
+import {useLocation} from 'react-router';
 
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
@@ -13,7 +14,9 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Reacts = () => {
   const [cont, setCont] = useState("");
-  const [searchtitle, setSearchTitle] = useState("Basics of React");
+  const location = useLocation();
+  const title = location.state?.Title;
+  const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Basics of React" : title);
   // console.log("++++++++++++", searchtitle);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);

@@ -1,6 +1,6 @@
 const express = require('express');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const {Article,React, Java} = require("../Models/ContentSchema");
+const {Article,React, Java, cplusplus, golang} = require("../Models/ContentSchema");
 //import OpenAI from "openai";
 //const {OpenAI} = require('openai')
 require("dotenv").config();
@@ -181,11 +181,115 @@ const addJavaContent = async (req,res) =>{
 
 
 
+// contorller for cplusplus add and update cplusplus title and content
+const getcplusplusContent = async(req,res) =>{
+    //check content with prompt
+    try {
+       const {title} = req.query;
+       const existingcont = await cplusplus.find({title});
+       res.json(existingcont)
+    } catch (error) {
+       res.send("No content Avialbale")
+       // console.log("Error",error)
+        
+       
+    }
+}
+
+const addcplusplusContent = async (req,res) =>{
+    try {
+        const {title,content} = req.body;
+        const data = await cplusplus.findOneAndUpdate(
+            {title:title},
+            {content:content},
+        {new:true,upsert:true})
+        res.status(201).send({
+            success:true,
+           message: data.createdAt ? "Article created successfully" : "Article updated successfully",
+        })
+    } catch (error) {
+        console.log('Error1',error)
+        
+    }
+}
+
+
+
+// contorller for golang add and update golang title and content
+const getgolangContent = async(req,res) =>{
+    //check content with prompt
+    try {
+       const {title} = req.query;
+       const existingcont = await golang.find({title});
+       res.json(existingcont)
+    } catch (error) {
+       res.send("No content Avialbale")
+       // console.log("Error",error)
+        
+       
+    }
+}
+
+const addgolangContent = async (req,res) =>{
+    try {
+        const {title,content} = req.body;
+        const data = await golang.findOneAndUpdate(
+            {title:title},
+            {content:content},
+        {new:true,upsert:true})
+        res.status(201).send({
+            success:true,
+           message: data.createdAt ? "Article created successfully" : "Article updated successfully",
+        })
+    } catch (error) {
+        console.log('Error1',error)
+        
+    }
+}
+
+
+
+// contorller for rust add and update rust title and content
+const getrustContent = async(req,res) =>{
+    //check content with prompt
+    try {
+       const {title} = req.query;
+       const existingcont = await rust.find({title});
+       res.json(existingcont)
+    } catch (error) {
+       res.send("No content Avialbale")
+       // console.log("Error",error)
+        
+       
+    }
+}
+
+const addrustContent = async (req,res) =>{
+    try {
+        const {title,content} = req.body;
+        const data = await rust.findOneAndUpdate(
+            {title:title},
+            {content:content},
+        {new:true,upsert:true})
+        res.status(201).send({
+            success:true,
+           message: data.createdAt ? "Article created successfully" : "Article updated successfully",
+        })
+    } catch (error) {
+        console.log('Error1',error)
+        
+    }
+}
+
+
+
+
 
 
 
 module.exports = {addContent,getcontent,GenerateAIContent,getReactContent,addReactContent,
-    getJavaContent,addJavaContent
+    getJavaContent,addJavaContent,addcplusplusContent,getcplusplusContent,getgolangContent,
+    addgolangContent,getrustContent,addrustContent
 }
 // module.exports = {GenerateAIContent,getAIcontent,updatecontent,addContent,generatechatgpt}
 

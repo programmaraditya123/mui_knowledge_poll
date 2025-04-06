@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FaBars } from "react-icons/fa";
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const WriteEarn = ({ placeholder }) => {
@@ -55,7 +55,7 @@ const WriteEarn = ({ placeholder }) => {
       navigate('/react');
       }else{
         alert("User Must be loggedin to post content");
-        navigate("/react");
+        navigate("/login");
       }
     } 
     if (tag === 2){
@@ -67,13 +67,14 @@ const WriteEarn = ({ placeholder }) => {
       navigate('/java');
       }else{
         alert("User Must be loggedin to post content")
-        navigate("/java")
+        navigate("/login")
       }
 
-    }else {
+    }
+    if(tag === 0) {
       const token = getToken();
       if(token){
-      const data = await axios.post(`${BASE_URL}/getcont/addcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
+      const data = await axios.post(`${BASE_URL}/app/getcont/addcontent`,{title:title,content:content},{headers:{Authorization:`Bearer ${token}`}});
       //const data = await axios.post(`https://localhost:8000/app/getcont/addcontent`,{title:title,content:content});
       //const data = await axios.post(`/api/app/getcont/addcontent`,{title:title,content:content});
       setContent("");

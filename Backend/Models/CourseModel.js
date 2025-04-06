@@ -3,25 +3,28 @@ const mongoose  = require('mongoose');
 const courseSchema = new mongoose.Schema({
     title:{
         type:String,
-        // required:true
+        required:true
     },
     description:{
         type:String,
-        // required:true
+        required:true
 
     },
     category:{
         type:String,
-        // required:true,
+        required:true,
         enum: ['Programming', 'Data Science', 'Machine Learning', 'Design', 'Marketing', 'Other','Python']
     },
     instructor:{
         type:String,
-        // required:true
+        required:true
+    },
+    TTOC:{
+        type:Number
     },
     price:{
         type:Number,
-        // requires:true,
+        required:true,
         default:0
     },
     uploadedon:{
@@ -31,8 +34,20 @@ const courseSchema = new mongoose.Schema({
     videoName:{
         type:String
     },
-    content:String,
+    likes:{
+        type:Number,
+        default:0
+    },
+    comments:{
+        type:[String]  
+    },
+    courseimg:{
+         data:Buffer,
+         contentType:String
+    }
 },{timestamps:true})
 
 
 module.exports = mongoose.model('course',courseSchema)
+
+// TTOC = total time of the course

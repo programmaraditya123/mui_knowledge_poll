@@ -4,6 +4,8 @@ import { HiBars3CenterLeft } from "react-icons/hi2";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaGoogle } from "react-icons/fa";
 import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 
 const AIContentGenerationPage = () => {
   const chatRef = useRef(null);
@@ -11,7 +13,7 @@ const AIContentGenerationPage = () => {
   const[input,setInput] = useState("");
   // const[output,setOutput] = useState("");
   // console.log("-----------",output)
-  console.log("++++++++++++",input)
+  //console.log("++++++++++++",input)
    
    
     
@@ -19,7 +21,7 @@ const AIContentGenerationPage = () => {
     setMessages([...messages,{text:input,sender:'user'}]);
     setInput("");
     try {
-      const content = await axios.post(`http://localhost:8000/app/getcont/generate`,{prompt:input});
+      const content = await axios.post(`${BASE_URL}/app/getcont/generate`,{prompt:input});
       // setOutput(content.data.content);
       setTimeout(() => {
           setMessages((prevMessages) =>[...prevMessages,{text:content.data.content,sender:'ai'}]);
