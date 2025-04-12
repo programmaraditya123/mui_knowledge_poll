@@ -37,6 +37,9 @@
     row-gap: 2rem;
     /* gap: 2rem; */
 }
+.smcrds a{
+    text-decoration: none;
+}
 .lrgcrd{
     display: grid;
     grid-template-columns: 50% 50%;

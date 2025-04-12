@@ -11,7 +11,7 @@ import c from '../assets/Images/c.jpeg'
 import d from '../assets/Images/b.jpeg'
 //import SmallCards from '../assets/Components/SmallCards/SmallCards';
 //import LargeCards from '../assets/Components/LargeCards/LargeCards';
-import { useNavigate } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 
 const TextCarousel = lazy(() => import('../assets/Components/Carousel'))
 const EmblaCarousel = lazy(() => import('../assets/Components/EmblaCarousel/EmblaCarousel'))
@@ -21,7 +21,7 @@ const EmblaCarousel = lazy(() => import('../assets/Components/EmblaCarousel/Embl
 // const d = lazy(() => import('../assets/Images/b.jpeg'))
 const SmallCards = lazy(() => import('../assets/Components/SmallCards/SmallCards'))
 const LargeCards = lazy(() => import('../assets/Components/LargeCards/LargeCards'))
-const Cards = lazy(() => import('../assets/Components/Cards'))
+const Cards = lazy(() => import('../assets/Components/Cards'))  
 const Searcharea = lazy(() => import('../assets/Components/Searcharea'));
 const PrimarySearchAppBar = lazy(() => import('../assets/Components/Navbar'))
 const SLIDES = [a,b,c,d]
@@ -41,7 +41,7 @@ const HomePage = () => {
     <div className='searchnav'>
      <PrimarySearchAppBar/>
      </div>
-     <TextCarousel b="React" c="Java" d="C++" e="Rust" f="Golang" g="C" h="Perl" i="Javscript"/> 
+     <TextCarousel b="React" c="Java" d="C" e="Rust" f="Golang" g="C++" h="Perl" i="Javscript"/> 
      <Searcharea/>
       <div className='margin-cont'>
       
@@ -88,42 +88,117 @@ const HomePage = () => {
       </div>
       <h3>Web Development</h3><br/>
       <div className='smcrds'>
-     <SmallCards title ="HTML"/><SmallCards title = "CSS"/><SmallCards title="Javascript"/><SmallCards title="React"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <NavLink to='/html'><SmallCards title ="HTML"/></NavLink>
+     <NavLink to='/css'><SmallCards title="CSS"/></NavLink>
+     <NavLink to='/js'><SmallCards title="Javascript"/></NavLink>
+     <NavLink to='/react'><SmallCards title="React"/></NavLink>
+     <NavLink to='/bootstrap'><SmallCards title="Bootstrap"/></NavLink>
+     <NavLink to='/tailwind'><SmallCards title="Tailwind CSS"/></NavLink>
+     {/* <SmallCards title="Frontend Dev..."/>
+     <SmallCards title="Backend Dev.."/> */}
+
+     <br/>
       
      </div>
      <h3>AI ML & Data Science</h3><br/>
      <div className='smcrds'>
-     <SmallCards title ="Data Science"/><SmallCards title = "Machine Learning"/><SmallCards title="Javascript"/><SmallCards title="React"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <NavLink to='/datascience'><SmallCards title ="Data Science"/></NavLink>
+     <NavLink to='/machinelearning'><SmallCards title = "Machine Learning"/></NavLink>
+     <NavLink to='/deeplearning'><SmallCards title="Deep Learning"/></NavLink>
+     <NavLink to='/dataanalyst'><SmallCards title="Data Analyst"/></NavLink>
+     <NavLink to='/aiagents'> <SmallCards title="AI agents"/></NavLink>
+     <NavLink to='/sklearn'><SmallCards title="Scikit Learn"/></NavLink>
+     <NavLink to='/matplotlib'><SmallCards title="Matplotlib"/></NavLink>
+     <NavLink to='/pandas'><SmallCards title="Pandas"/></NavLink>
+     <NavLink to='/numpy'><SmallCards title="Numpy"/></NavLink>
+     <NavLink to='/seaborn'><SmallCards title="Seaborn"/></NavLink>
+
+     <br/>
       
      </div>
      <h3>Programming Languages</h3><br/>
      <div className='smcrds'>
-     <SmallCards title ="Python"/><SmallCards title = "Java"/><SmallCards title="Javascript"/><SmallCards title="C++"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <NavLink to='/python'><SmallCards title ="Python"/></NavLink>
+    <NavLink to='/java'> <SmallCards title = "Java"/></NavLink>
+     <NavLink to='/js'><SmallCards title="Javascript"/></NavLink>
+    <NavLink to='/cpp'> <SmallCards title="C++"/></NavLink>
+     <NavLink to='/golang'><SmallCards title="Golang"/></NavLink>
+     <NavLink to='/css'><SmallCards title="CSS"/></NavLink>
+     <NavLink to='/rust'><SmallCards title="Rust"/></NavLink>
+    <NavLink to='/perl'> <SmallCards title="Perl"/></NavLink>
+    <NavLink to='/python'> <SmallCards title="Python"/></NavLink>
+    <NavLink to='/c'> <SmallCards title="C"/></NavLink>
+    <NavLink to='/tailwind'><SmallCards title="Tailwind CSS"/></NavLink>
+
+     <br/>
       
      </div>
      <h3>Interview Preparation</h3><br/>
      <div className='smcrds'>
-     <SmallCards title ="SDE sheets"/><SmallCards title = "Puzzles"/><SmallCards title="Javascript"/><SmallCards title="React"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <SmallCards title ="SDE sheets"/>
+     <SmallCards title = "Puzzles"/>
+     <SmallCards title="Javascript"/>
+     <SmallCards title="React"/>
+     <NavLink to='/bootstrap'><SmallCards title="Bootstrap"/></NavLink>
+     <NavLink to='/tailwind'><SmallCards title="Tailwind CSS"/></NavLink>
+     <SmallCards title="Frontend Dev..."/>
+     <SmallCards title="Backend Dev.."/>
+
+     <br/>
       
      </div>
      <h3>CS Subjects</h3><br/>
      <div className='smcrds'>
-     <SmallCards title ="Operating System"/><SmallCards title = "CN"/><SmallCards title="DBMS"/><SmallCards title="React"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <NavLink to='/os'><SmallCards title ="Operating System"/></NavLink>
+    <NavLink to='/cn'> <SmallCards title = "CN"/></NavLink>
+    <NavLink to='/dbms'> <SmallCards title="DBMS"/></NavLink>
+     <NavLink to='/oops'><SmallCards title="OOPS"/></NavLink>
+     <NavLink to='/fla'><SmallCards title="FLA"/></NavLink>
+     <NavLink to='/cd'><SmallCards title="CD"/></NavLink>
+     <NavLink to='/dsa'><SmallCards title="DSA"/></NavLink>
+     <NavLink to='/isdh'><SmallCards title="ISDH/NS"/></NavLink>
+
+     <br/>
       
      </div>
      <h3>DataBases</h3><br/>
      <div className='smcrds'>
-     <SmallCards title ="SQL"/><SmallCards title = "MYSQL"/><SmallCards title="Javascript"/><SmallCards title="React"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <NavLink to='/sql'><SmallCards title ="SQL"/></NavLink>
+      <NavLink to='/mysql'><SmallCards title = "MYSQL"/></NavLink>
+     <NavLink to='/mongodb'><SmallCards title="MongoDB"/></NavLink>
+     <NavLink to='/postgre'><SmallCards title="Postgre SQL"/></NavLink>
+     {/* <SmallCards title="Oracle"/> */}
+     {/* <SmallCards title="Db Browser"/>
+     <SmallCards title="MariaDB"/>
+     <SmallCards title="SQL Server"/> */}
+
+     <br/>
       
      </div>
      <h3>Devops</h3><br/>
      <div className='smcrds'>
-     <SmallCards title ="Data Science"/><SmallCards title = "Machine Learning"/><SmallCards title="Javascript"/><SmallCards title="React"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <NavLink to='/docker'><SmallCards title ="Docker"/></NavLink>
+     <NavLink to='/kubernetes'><SmallCards title = "Kubernetes"/></NavLink>
+     <NavLink to='/git'><SmallCards title="Git"/></NavLink>
+     <NavLink to='/aws'><SmallCards title="AWS"/></NavLink>
+     <NavLink to='/gradle'><SmallCards title="Gradle"/></NavLink>
+     <NavLink to='/gitlab'><SmallCards title="GitLab"/></NavLink>
+     {/* <SmallCards title="openStack"/>
+     <SmallCards title="grayLog"/><br/> */}
       
      </div>
      <h3>Tutorials</h3><br/>
      <div className='smcrds'>
-     <SmallCards title ="Data Science"/><SmallCards title = "Machine Learning"/><SmallCards title="Javascript"/><SmallCards title="React"/><SmallCards title="Bpptstrap"/><SmallCards title="Tailwind CSS"/><SmallCards title="Frontend Dev..."/><SmallCards title="Backend Dev.."/><br/>
+     <NavLink to='/systemdesign'><SmallCards title ="System Design"/></NavLink>
+     <NavLink to='/android'><SmallCards title = "Android"/></NavLink>
+     <NavLink to='/linux'><SmallCards title="Linux"/></NavLink>
+    <NavLink to='/st'> <SmallCards title="Software Testing"/></NavLink>
+     <NavLink to='/pm'><SmallCards title="Project Management"/></NavLink>
+    <NavLink to='/excel'><SmallCards title="Excel"/></NavLink>
+     <NavLink to='/productm'><SmallCards title="Product Management"/></NavLink>
+     {/* <SmallCards title="Design Pattern"/> */}
+
+     <br/>
       
      </div>
      </div>

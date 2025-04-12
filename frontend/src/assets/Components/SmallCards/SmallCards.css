@@ -17,6 +17,9 @@
     background-color: burlywood;
     justify-content: space-between;
 }
+.tit a{
+    text-decoration: none !important;
+}
  
 @media screen and (max-width : 420px){
     .jobs-card{
