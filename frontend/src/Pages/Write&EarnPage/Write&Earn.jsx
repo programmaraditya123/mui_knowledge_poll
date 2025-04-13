@@ -32,7 +32,7 @@ const WriteEarn = ({ placeholder }) => {
 
 
     const getToken = () =>{
-      return localStorage.getItem('token');
+      return JSON.parse(localStorage.getItem('token'));
     }
 
   const config = useMemo(
