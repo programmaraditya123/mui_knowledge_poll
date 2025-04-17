@@ -40,3 +40,20 @@
 .cbody5p{
     opacity: 0.6;
 }
+.cbody7{
+    height: 18rem;
+    /* border: 0.1rem solid black; */
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+.cbody71{
+    border: 0.1rem solid black;
+
+}
+.cbody72{
+    border: 0.1rem solid black;
+}
+
+
+ 

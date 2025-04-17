@@ -42,7 +42,21 @@ const CommunityHomeBody = () => {
           <p className='cbody5p'>JS technolgies</p>
         </div>
       </div>
+      <div className='cbody5'>
+        <div className='cbody3p'>Our main features</div>
+        <div className='cbody2p'>Everything is collected in one place for knowing different technologies with the help of the <br/>
+        percentage of the usefullness , we can provide the best for you</div>
+      </div>
+      <div className='cbody7'>
+        <div className='cbody71'>Community Members</div>
+        <div className='cbody72'><img  alt='sample of community members'/></div>
+      </div>
+       
+            
+
+      
     </div>
+     
        
     </>
   )

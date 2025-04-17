@@ -47,6 +47,7 @@ import St from './assets/Components/ContentParts/Softwaretesting/St.jsx';
 import Projectmanagement from './assets/Components/ContentParts/Projectmanagement/Projectmanagement.jsx';
 import Excel from './assets/Components/ContentParts/Excel/Excel.jsx';
 import Productmanagement from './assets/Components/ContentParts/Productmanagement/Productmanagement.jsx';
+import AdminpanelHome from './AdminPanel/AdminPanelHome/AdminpanelHome.jsx';
  
  
 const Features = lazy(() => import('./assets/Components/Features.jsx'))
@@ -131,6 +132,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/course/coursedetail" element={<CourseDetail />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin" element={<AdminpanelHome/>}/>
         </Routes>
       </Suspense>
        

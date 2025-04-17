@@ -161,6 +161,12 @@ const Python = () => {
           {/* {cont} */}
 
           <div dangerouslySetInnerHTML={{ __html: cont }} />
+
+
+          <div  className='viewscreator'>
+           <div className='creator'>Aditya</div>
+            <div className='views'>10</div>
+          </div>
           {cont?.trim() === `${searchtitle} contetnt not available`.trim() ?  
           <button className='btn-18' onClick={() => routerchange(searchtitle,0)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont,0)}>Modify Content</button>
           }

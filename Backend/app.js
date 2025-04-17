@@ -15,8 +15,20 @@ const { Readable } = require('stream');
 const path = require('path');
 const Course = require('./Models/CourseModel');
 require("dotenv").config();
+const http = require('http');
+const {Server} = require('socket.io');
 
 const app = express();
+app.set('trust proxy', true);
+const server = http.createServer(app);
+
+const io = new Server(server,{
+  cors:{
+      origin:["http://localhost:5173",'https://main.d2jgjuq5es9kag.amplifyapp.com'],
+      methods:["GET","POST"],
+      credentials:true,
+  }
+});
 
 
 const cors = require('cors');
@@ -38,6 +50,37 @@ app.use(cors({
   },
   credentials: true
 }));
+
+
+//socket section
+
+//store connected users
+let activeUsers = new Set();
+
+io.on("connection",(socket) => {
+  const ip =
+  socket.handshake.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+  socket.handshake.address;
+
+  console.log(`user connected with id : ${socket.id},IP:${ip}`)
+  activeUsers.add(socket.id)
+
+
+  //emit active users to admin
+  io.emit('updateUserCount',activeUsers.size);
+
+  socket.on('disconnect',() => {
+    console.log(`user disconnected with id : ${socket.id}`)
+    activeUsers.delete(socket.id);
+    io.emit('updateUserCount',activeUsers.size)
+  });
+
+    // Optional: Collect metadata (IP, page, browser, etc.)
+    socket.on('userData', (data) => {
+      console.log('User Data Received:', data,"IP",ip);
+      // Save to DB or cache for admin panel if needed
+    });
+});
 
   
 
@@ -120,6 +163,6 @@ const PORT = process.env.PORT || 8081;
 //console.log(PORT)
 
 
-app.listen(PORT,() => {
+server.listen(PORT,() => {
     console.log(`app.js is runing on port  ${PORT}`)
 })
