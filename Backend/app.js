@@ -79,6 +79,11 @@ io.on("connection",(socket) => {
     socket.on('userData', (data) => {
       console.log('User Data Received:', data,"IP",ip);
       // Save to DB or cache for admin panel if needed
+      const fullData = {
+        ...data,
+        ip
+      }
+      io.emit('userData',fullData)
     });
 });
 
