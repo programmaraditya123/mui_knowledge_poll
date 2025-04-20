@@ -19,6 +19,7 @@ const Login = () => {
                 alert(res.data.message);
                 localStorage.setItem("token",JSON.stringify(res.data.token));
                 localStorage.setItem("email",JSON.stringify(res.data.user.email))
+                localStorage.setItem("name",JSON.stringify(res.data.user.name))
                 navigate('/')
             }else{
                 alert(res.data.message);

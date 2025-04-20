@@ -6,6 +6,7 @@ import axios from 'axios';
 //import { FaBars } from "react-icons/fa";
 import { useNavigate } from 'react-router';
 import {useLocation} from 'react-router';
+import CreatorViews from '../../../SmallComponents/CreatorViewsSection/CreatorViews';
 
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
@@ -14,6 +15,10 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Reacts = () => {
   const [cont, setCont] = useState("");
+  const [tagu,setTagu] = useState("");
+  const [views,setViews] = useState();
+  const [creator,setCreator] = useState("")
+  const [time,setTime] = useState("")
   const location = useLocation();
   const title = location.state?.Title;
   const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Basics of React" : title);
@@ -21,6 +26,9 @@ const Reacts = () => {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   // console.log("------------",cont)
+  console.log("111111111",tagu);
+  console.log("222222222222222",views)
+  console.log("3333333333333333",creator)
 
  const  react_topics = [
     "Basics of React",
@@ -138,14 +146,39 @@ const Reacts = () => {
        const data = await axios.get(`${BASE_URL}/app/getcont/getreactcontent`, { params: { title: searchtitle } });
       // const data = await axios.get(`http://localhost:8000/app/getcont/getreactcontent`, { params: { title: searchtitle } });
       setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
+      setTagu(data.data[0]?.tag);
+      setViews(data.data[0]?.views);
+      setCreator(data.data[0]?.creator);
+      setTime(data.data[0]?.createdAt);
     } catch (error) {
       console.log("Error", error)
 
     }
   }
+
+
+
+  const updateViews = async () =>{
+    try {
+      const view = await axios.post(`${BASE_URL}/app/updateuser/updateviews`,{title:searchtitle,tag:tagu,views:views+1 })
+    } catch (error) {
+      console.log("Error2",error)
+      
+    }
+  }
+
   useEffect(() => {
     getContent();
   }, [searchtitle])
+
+  useEffect(() => {
+    if (tagu && searchtitle){
+    const timer = setTimeout(() => {
+         updateViews();
+    },30000);
+    return () => clearTimeout(timer);
+  }
+  },[tagu,searchtitle])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -195,7 +228,7 @@ const Reacts = () => {
 
           {/* <p>Nothing to show here</p> */}
           {/* <button className='btn-13' onClick={generateContent}>Click to Generate Content</button> */}
-
+           <CreatorViews name={creator} views={views} time={time}/>
           <div className='disp-cont-btns'>
             <button className='btn-12'>Previous Topic Topic Name</button>
             <button className='btn-12'>Next Topic Topic Name</button>

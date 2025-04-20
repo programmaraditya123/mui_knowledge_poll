@@ -36,6 +36,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("email");
+    localStorage.removeItem("name");
     setIsSignIn(false);
     setEmail("");
 

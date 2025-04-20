@@ -4,7 +4,10 @@ const ContentSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"python",
@@ -18,7 +21,10 @@ const ReactSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"react",
@@ -33,7 +39,10 @@ const JavaSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"java",
@@ -48,7 +57,10 @@ const CplusplusSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"cpp",
@@ -63,7 +75,10 @@ const GolangSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"golang",
@@ -78,7 +93,10 @@ const RustSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"rust",
@@ -93,7 +111,10 @@ const CSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"c",
@@ -107,7 +128,10 @@ const PerlSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"perl",
@@ -121,7 +145,10 @@ const JavaScriptSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"javascript",
@@ -136,7 +163,10 @@ const HtmlSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"html",
@@ -151,7 +181,10 @@ const CssSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"css",
@@ -166,7 +199,10 @@ const BootstrapSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"bootstrap",
@@ -181,7 +217,10 @@ const TailwindcssSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"tailwindcss",
@@ -196,7 +235,10 @@ const DatascienceSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"datascience",
@@ -212,7 +254,10 @@ const MachinelearningSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"ml",
@@ -228,7 +273,10 @@ const DeeplearningSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"dl",
@@ -242,7 +290,10 @@ const DataanalystSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"da",
@@ -257,7 +308,10 @@ const AiagentsSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"aiagents",
@@ -274,7 +328,10 @@ const ScikitlearnSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"sklearn",
@@ -289,7 +346,10 @@ const MatplotlibSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"matplotlib",
@@ -304,7 +364,10 @@ const PandasSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"panndas",
@@ -319,7 +382,10 @@ const NumpySchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"numpy",
@@ -334,7 +400,10 @@ const SeabornSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"seaborn",
@@ -349,7 +418,10 @@ const OperatingsystemSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"os",
@@ -364,7 +436,10 @@ const  ComputernetworkSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"cn",
@@ -380,7 +455,10 @@ const  DbmsSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"dbms",
@@ -396,7 +474,10 @@ const  OopsSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"oops",
@@ -411,7 +492,10 @@ const  FlaSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"fla",
@@ -427,7 +511,10 @@ const  CdSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"cd",
@@ -442,7 +529,10 @@ const  DsaSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"dsa",
@@ -458,7 +548,10 @@ const  IsdhSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"isdh",
@@ -474,7 +567,10 @@ const  SqlSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"sql",
@@ -490,7 +586,10 @@ const  MysqlSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"mysql",
@@ -506,7 +605,10 @@ const  MongodbSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"mongodb",
@@ -524,7 +626,10 @@ const  PostgresqlSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"postgresql",
@@ -539,7 +644,10 @@ const  DockerSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"docker",
@@ -554,7 +662,10 @@ const  KubernetesSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"kubernetes",
@@ -570,7 +681,10 @@ const  GitSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"git",
@@ -586,7 +700,10 @@ const  AwsSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"aws",
@@ -602,7 +719,10 @@ const  GradleSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"gradle",
@@ -618,7 +738,10 @@ const  GitlabSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"gitlab",
@@ -633,7 +756,10 @@ const  SystemdesignSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"systemdesign",
@@ -649,7 +775,10 @@ const  AndroidSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"android",
@@ -665,7 +794,10 @@ const  LinuxSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"linux",
@@ -681,7 +813,10 @@ const  SoftwaretestingSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"st",
@@ -697,7 +832,10 @@ const  ProductmanagementSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"productmanagement",
@@ -712,7 +850,10 @@ const  ProjectmanagementSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"projectmanagement",
@@ -728,7 +869,10 @@ const  ExcelSchema = new moongoose.Schema({
     title:String,
     content:String,
     creator:String,
-    views:Number,
+    views:{
+        type:Number,
+        default:0
+    },
     tag:{
         type:String,
         default:"excel",

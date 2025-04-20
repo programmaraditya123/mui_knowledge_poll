@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-const { connectDB } = require("../config/db");
+//const { connectDB } = require("../config/db");
 require("dotenv").config();
 
 const uri = process.env.MONGODB_KEY;

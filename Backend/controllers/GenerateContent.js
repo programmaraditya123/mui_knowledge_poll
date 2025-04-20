@@ -95,10 +95,10 @@ const getcontent = async(req,res) =>{
 
 const addContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await Article.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -128,10 +128,10 @@ const getReactContent = async(req,res) =>{
 
 const addReactContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await React.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -164,10 +164,10 @@ const getJavaContent = async(req,res) =>{
 
 const addJavaContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await Java.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -198,10 +198,10 @@ const getcplusplusContent = async(req,res) =>{
 
 const addcplusplusContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await cplusplus.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -232,10 +232,10 @@ const getgolangContent = async(req,res) =>{
 
 const addgolangContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await golang.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -266,10 +266,10 @@ const getrustContent = async(req,res) =>{
 
 const addrustContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await rust.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -299,10 +299,10 @@ const getCContent = async(req,res) =>{
 
 const addCContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await C.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -333,10 +333,10 @@ const getperlContent = async(req,res) =>{
 
 const addperlContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await perl.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -368,10 +368,10 @@ const getjavascriptContent = async(req,res) =>{
 
 const addjavascriptContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await JavaScript.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -402,10 +402,10 @@ const gethtmlContent = async(req,res) =>{
 
 const addhtmlContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await Html.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -438,10 +438,10 @@ const getcssContent = async(req,res) =>{
 
 const addcssContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await Css.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -472,10 +472,10 @@ const getbsContent = async(req,res) =>{
 
 const addbsContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await Bootstrap.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -506,10 +506,10 @@ const gettailwindcssContent = async(req,res) =>{
 
 const addtailwindcssContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await Tailwindcss.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -540,10 +540,10 @@ const getdsContent = async(req,res) =>{
 
 const adddsContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await Datascience.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -574,10 +574,10 @@ const getmlContent = async(req,res) =>{
 
 const addmlContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await ml.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -608,10 +608,10 @@ const getdlContent = async(req,res) =>{
 
 const adddlContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await dl.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -643,10 +643,10 @@ const getdaContent = async(req,res) =>{
 
 const adddaContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await da.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -678,10 +678,10 @@ const getaiagentsContent = async(req,res) =>{
 
 const addaiagentsContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await aiagents.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -711,10 +711,10 @@ const getsklearnContent = async(req,res) =>{
 
 const addsklearnContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await sklearn.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -744,10 +744,10 @@ const getmatplotlibContent = async(req,res) =>{
 
 const addmatplotlibContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await matplotlib.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -778,10 +778,10 @@ const getpandasContent = async(req,res) =>{
 
 const addpandasContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await pandas.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -812,10 +812,10 @@ const getnumpyContent = async(req,res) =>{
 
 const addnumpyContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await numpy.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -846,10 +846,10 @@ const getseabornContent = async(req,res) =>{
 
 const addseabornContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await seaborn.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -880,10 +880,10 @@ const getosContent = async(req,res) =>{
 
 const addosContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await operatingsystem.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -912,10 +912,10 @@ const getcnContent = async(req,res) =>{
 
 const addcnContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await computernetwork.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -945,10 +945,10 @@ const getdbmsContent = async(req,res) =>{
 
 const adddbmsContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await dbms.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -978,10 +978,10 @@ const getoopsContent = async(req,res) =>{
 
 const addoopsContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await oops.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1012,10 +1012,10 @@ const getflaContent = async(req,res) =>{
 
 const addflaContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await fla.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1045,10 +1045,10 @@ const getcdContent = async(req,res) =>{
 
 const addcdContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await cd.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1079,10 +1079,10 @@ const getdsaContent = async(req,res) =>{
 
 const adddsaContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await dsa.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1113,10 +1113,10 @@ const getisdhContent = async(req,res) =>{
 
 const addisdhContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await isdh.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1147,10 +1147,10 @@ const getsqlContent = async(req,res) =>{
 
 const addsqlContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await sql.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1180,10 +1180,10 @@ const getmysqlContent = async(req,res) =>{
 
 const addmysqlContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await mysql.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1214,10 +1214,10 @@ const getmongodbContent = async(req,res) =>{
 
 const addmongodbContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await mongodb.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1246,10 +1246,10 @@ const getpostgreContent = async(req,res) =>{
 
 const addpostgreContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await postgresql.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1283,10 +1283,10 @@ const getdockerContent = async(req,res) =>{
 
 const adddockerContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await docker.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1317,10 +1317,10 @@ const getkubernetesContent = async(req,res) =>{
 
 const addkubernetesContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await kubernetes.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1350,10 +1350,10 @@ const getgitContent = async(req,res) =>{
 
 const addgitContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await git.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1384,10 +1384,10 @@ const getawsContent = async(req,res) =>{
 
 const addawsContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await aws.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1418,10 +1418,10 @@ const getgradleContent = async(req,res) =>{
 
 const addgradleContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await gradle.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1452,10 +1452,10 @@ const getgitlabContent = async(req,res) =>{
 
 const addgitlabContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await gitlab.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1487,10 +1487,10 @@ const getsystemdesignContent = async(req,res) =>{
 
 const addsystemdesignContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await systemdesign.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1520,10 +1520,10 @@ const getandroidContent = async(req,res) =>{
 
 const addandroidContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await android.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1554,10 +1554,10 @@ const getlinuxContent = async(req,res) =>{
 
 const addlinuxContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await linux.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1588,10 +1588,10 @@ const getsoftwaretestingContent = async(req,res) =>{
 
 const addsoftwaretestingContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await softwaretesting.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1623,10 +1623,10 @@ const getprojectmanagementContent = async(req,res) =>{
 
 const addprojectmanagementContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await projectmanagement.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1658,10 +1658,10 @@ const getexcelContent = async(req,res) =>{
 
 const addexcelContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+       const {title,content,name} = req.body;
         const data = await excel.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
@@ -1693,10 +1693,10 @@ const getproductmanagementContent = async(req,res) =>{
 
 const addproductmanagementContent = async (req,res) =>{
     try {
-        const {title,content} = req.body;
+        const {title,content,name} = req.body;
         const data = await productmanagement.findOneAndUpdate(
             {title:title},
-            {content:content},
+            {content:content,creator:name},
         {new:true,upsert:true})
         res.status(201).send({
             success:true,
