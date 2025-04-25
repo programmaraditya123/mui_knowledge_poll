@@ -36,7 +36,6 @@ const cors = require('cors');
 
 const allowedOrigins = [
   'https://www.knowledgepoll.site',
-  'https://main.d2jgjuq5es9kag.amplifyapp.com',
   'http://localhost:5173'
 ];
 
