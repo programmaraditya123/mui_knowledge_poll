@@ -13,14 +13,14 @@ const multer = require("multer");
 //const Grid = require("gridfs-stream");
 //const { MongoClient, GridFSBucket } = require('mongodb');
 const { Readable } = require('stream');
-const path = require('path');
+//const path = require('path');
 const Course = require('./Models/CourseModel');
 require("dotenv").config();
 // const http = require('http');
 // const {Server} = require('socket.io');
 
 const app = express();
-app.set('trust proxy', true);
+//app.set('trust proxy', true);
 // const server = http.createServer(app);
 
 // const io = new Server(server,{

@@ -1,19 +1,15 @@
 import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-//import Carousel from '../../Carousel';
 import axios from 'axios';
-//import './Python.css';
-//import { FaBars } from "react-icons/fa";
-import { useNavigate } from 'react-router';
-import {useLocation} from 'react-router';
+import { Link, useNavigate, useParams,useLocation} from 'react-router';
 import CreatorViews from '../../../SmallComponents/CreatorViewsSection/CreatorViews';
-
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
-
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Reacts = () => {
+  const {topic} = useParams();
+  const formattedTopic = decodeURIComponent(topic?.replace(/-/g,' ')) || "Basics of React";
   const [cont, setCont] = useState("");
   const [tagu,setTagu] = useState("");
   const [views,setViews] = useState();
@@ -21,16 +17,12 @@ const Reacts = () => {
   const [time,setTime] = useState("")
   const location = useLocation();
   const title = location.state?.Title;
-  const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Basics of React" : title);
-  // console.log("++++++++++++", searchtitle);
+  // const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Basics of React" : title);
+  const [searchtitle, setSearchTitle] = useState(formattedTopic);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
-  // console.log("------------",cont)
-  console.log("111111111",tagu);
-  console.log("222222222222222",views)
-  console.log("3333333333333333",creator)
-
- const  react_topics = [
+  
+  const  react_topics = [
     "Basics of React",
     "Introduction to React",
     "Setting up a React project (Vite, CRA)",
@@ -40,7 +32,6 @@ const Reacts = () => {
     "Event Handling",
     "Conditional Rendering",
     "Lists and Keys",
-
     "React Hooks",
     "useState",
     "useEffect",
@@ -50,7 +41,6 @@ const Reacts = () => {
     "useMemo",
     "useCallback",
     "Custom Hooks",
-
     "React Router",
     "Introduction to React Router",
     "Setting up Routes",
@@ -58,7 +48,6 @@ const Reacts = () => {
     "Dynamic Routes",
     "useParams, useNavigate",
     "Protected Routes",
-
     "State Management",
     "Context API",
     "Redux (Store, Reducers, Actions)",
@@ -66,66 +55,60 @@ const Reacts = () => {
     "Zustand",
     "Recoil",
     "Jotai",
-
     "Forms and Validation",
     "Controlled vs Uncontrolled Components",
     "Handling Forms in React",
     "Validation using React Hook Form",
     "Validation using Yup & Formik",
-
     "API Handling",
     "Fetch API",
     "Axios",
     "Handling Async/Await in React",
     "Error Handling in API Requests",
-
     "Performance Optimization",
     "React.memo",
     "Lazy Loading & Suspense",
     "Code Splitting",
     "Virtualization (React Window)",
-
     "Advanced React Concepts",
     "Higher Order Components (HOC)",
     "Render Props",
     "Portals",
     "Forwarding Refs",
     "Error Boundaries",
-
     "React with TypeScript",
     "Setting up React with TypeScript",
     "Typing Props & State",
     "Using TypeScript with Hooks",
-
     "Next.js (React Framework)",
     "Introduction to Next.js",
     "Pages and Routing",
     "Static Site Generation (SSG)",
     "Server-Side Rendering (SSR)",
     "API Routes",
-
     "Testing in React",
     "Unit Testing with Jest",
     "Testing Library (React Testing Library)",
     "End-to-End Testing with Cypress",
-
     "UI Libraries & Styling",
     "CSS Modules",
     "Styled Components",
     "Tailwind CSS",
     "Material-UI, Shadcn, Chakra UI",
-
     "React Native (For Mobile Apps)",
     "Introduction to React Native",
     "Navigation in React Native",
     "State Management in React Native",
-
     "Deployment & Production",
     "Building for Production",
     "Deploying on Vercel, Netlify, or Firebase",
     "CI/CD for React Apps"
 ]
 
+
+const currentIndex = react_topics.findIndex(t => t === formattedTopic);
+const prevTopic = react_topics[currentIndex - 1];
+const nextTopic = react_topics[currentIndex + 1];
  
 
  
@@ -139,13 +122,13 @@ const Reacts = () => {
     const path = "/writeearn"
     navigate(path,{state:{Title,Content,tag}})
   }
-  // http://13.201.93.211/api/home
+ 
 
   const getContent = async () => {
     try {
-       const data = await axios.get(`${BASE_URL}/app/getcont/getreactcontent`, { params: { title: searchtitle } });
-      // const data = await axios.get(`http://localhost:8000/app/getcont/getreactcontent`, { params: { title: searchtitle } });
-      setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
+      //  const data = await axios.get(`${BASE_URL}/app/getcont/getreactcontent`, { params: { title: searchtitle } });
+       const data = await axios.get(`${BASE_URL}/app/getcont/getreactcontent`, { params: { title: formattedTopic } });
+      setCont(data.data[0]?.content || `${formattedTopic} contetnt not available`);
       setTagu(data.data[0]?.tag);
       setViews(data.data[0]?.views);
       setCreator(data.data[0]?.creator);
@@ -160,7 +143,7 @@ const Reacts = () => {
 
   const updateViews = async () =>{
     try {
-      const view = await axios.post(`${BASE_URL}/app/updateuser/updateviews`,{title:searchtitle,tag:tagu,views:views+1 })
+      const view = await axios.post(`${BASE_URL}/app/updateuser/updateviews`,{title:searchtitle,tag:tagu,views:(views || 0)+1 })
     } catch (error) {
       console.log("Error2",error)
       
@@ -169,7 +152,7 @@ const Reacts = () => {
 
   useEffect(() => {
     getContent();
-  }, [searchtitle])
+  }, [formattedTopic])
 
   useEffect(() => {
     if (tagu && searchtitle){
@@ -212,7 +195,7 @@ const Reacts = () => {
             <ul>
 
               {react_topics.map((topics, index) => (
-                <li onClick={() => { setSearchTitle(topics) }} key={index}>{topics}</li>
+                <li key={index}><Link to={`/react/${topics.replace(/\s+/g, '-')}`}>{topics}</Link></li>
               ))}
             </ul>
           </div>
@@ -226,12 +209,13 @@ const Reacts = () => {
           <button className='btn-18' onClick={() => routerchange(searchtitle,1)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont,1)}>Modify Content</button>
           }
 
-          {/* <p>Nothing to show here</p> */}
-          {/* <button className='btn-13' onClick={generateContent}>Click to Generate Content</button> */}
+         
            <CreatorViews name={creator} views={views} time={time}/>
           <div className='disp-cont-btns'>
-            <button className='btn-12'>Previous Topic Topic Name</button>
-            <button className='btn-12'>Next Topic Topic Name</button>
+            
+            {prevTopic && <Link to={`/react/${encodeURIComponent(prevTopic)}`}><button className='btn-12'>Previous: {prevTopic}</button></Link>}
+            {nextTopic && <Link to={`/react/${encodeURIComponent(nextTopic)}`}><button className='btn-12'>Next: {nextTopic}</button></Link>}
+
           </div>
         </div>
 

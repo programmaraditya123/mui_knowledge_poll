@@ -1,6 +1,6 @@
 import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'; // Updated import
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'; // Updated import
 import App from './App.jsx';
 import C from './assets/Components/ContentParts/C/C.jsx';
 import Golang from './assets/Components/ContentParts/Golang/Golang.jsx';
@@ -74,7 +74,8 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/python" element={<PythonPage />} />
-          <Route path="/react" element={<ReactComponent />} />
+          <Route path="/react" element={<Navigate to="/react/Basics-of-React" />} />
+          <Route path="/react/:topic" element={<ReactComponent />} />
           <Route path="/java" element={<JavaComponent />} />
           <Route path='/c' element={<C/>}/>
           <Route path='/golang' element={<Golang/>}/>
