@@ -37,6 +37,7 @@ const cors = require('cors');
 const allowedOrigins = [
   'https://www.knowledgepoll.site',
   'http://localhost:5173',
+  'https://knowledgepoll.site',
 ];
 
 app.use(cors({

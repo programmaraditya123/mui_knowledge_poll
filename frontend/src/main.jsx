@@ -166,7 +166,7 @@ createRoot(document.getElementById('root')).render(
           <Route path='/pm/:topic' element={<Projectmanagement/>}/>
           <Route path='/excel' element={<Navigate to='/excel/Introduction-to-Excel-Interface'/>}/>
           <Route path='/excel/:topic' element={<Excel/>}/>
-          <Route path='/productm' element={<Navigate to='Introduction-to-Product-Management'/>}/>
+          <Route path='/productm' element={<Navigate to='/productm/Introduction-to-Product-Management'/>}/>
           <Route path='/productm/:topic' element={<Productmanagement/>}/>
           <Route path="/writeearn" element={<WriteEarn />} />
           <Route path="/aicont" element={<AIContentGeneration />} />
