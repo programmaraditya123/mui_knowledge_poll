@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
 import  '../Python/Python.css';
-import { useNavigate , useLocation , useParams  , Link} from 'react-router';
+import { useLocation , useParams  , Link} from 'react-router';
 const CreatorViews  = lazy(() => import('../../../SmallComponents/CreatorViewsSection/CreatorViews'));
 const NextPrevTopic = lazy(() => import( '../../../SmallComponents/NextPrevTopic/NextPrevTopic'));
 

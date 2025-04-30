@@ -144,8 +144,8 @@ createRoot(document.getElementById('root')).render(
           <Route path='/postgre/:topic' element={<Postgre/>}/>
           <Route path='/docker' element={<Navigate to='/docker/Introduction-to-Docker'/>}/>
           <Route path='/docker/:topic' element={<DockerPage/>}/>
-          <Route path='/kubernetes' element={<Navigate to='/kubernetes/Introduction-to-Kubernetes'/>}/>
-          <Route path='/kubernetes/:topic' element={<Kubernetes/>}/>
+          {/* <Route path='/kubernetes' element={<Navigate to='/kubernetes/Introduction-to-Kubernetes'/>}/>
+          <Route path='/kubernetes/:topic' element={<Kubernetes/>}/> */}
           <Route path='/git' element={<Navigate to='/git/Introduction-to-Version-Control'/>}/>
           <Route path='/git/:topic' element={<Git/>}/>
           <Route path='/aws' element={<Navigate to='/aws/Introduction-to-AWS'/>}/>
