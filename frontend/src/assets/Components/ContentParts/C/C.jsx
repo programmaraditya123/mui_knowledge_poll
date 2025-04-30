@@ -1,12 +1,11 @@
 import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-//import Carousel from '../../Carousel';
 import axios from 'axios';
 import  '../Python/Python.css';
-//import { FaBars } from "react-icons/fa";
-import { useNavigate } from 'react-router';
-import { useLocation } from 'react-router';
-
+import { useNavigate ,useLocation , useParams, Link } from 'react-router';
+import { FaArrowLeft , FaArrowRight} from "react-icons/fa";
+import CreatorViews from '../../../SmallComponents/CreatorViewsSection/CreatorViews';
+import NextPrevTopic from '../../../SmallComponents/NextPrevTopic/NextPrevTopic';
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -14,15 +13,15 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const C = () => {
+  const {topic} = useParams();
+  const formattedTopic = decodeURIComponent(topic?.replace(/-/g,' '));
   const [cont, setCont] = useState("");
   const location = useLocation();
   const title = location.state?.Title;
-  const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Introduction to C" : title);
-  // console.log("++++++++++++", searchtitle);
+  const [searchtitle, setSearchTitle] = useState(formattedTopic);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
-  // console.log("------------",cont)
-  // console.log("2222222222",title)
+  
    
 
 const c_language_topics = [
@@ -84,6 +83,20 @@ const c_language_topics = [
     "Best Practices in C Programming"
 ]
 
+const currentIndex = c_language_topics.findIndex(t => 
+  t.trim().toLowerCase() === formattedTopic.trim().toLowerCase()
+);
+let prevTopic = null;
+let nextTopic = null;
+
+if (currentIndex > 0) {
+  prevTopic = c_language_topics[currentIndex - 1];
+}
+
+if (currentIndex >= 0 && currentIndex < c_language_topics.length - 1) {
+  nextTopic = c_language_topics[currentIndex + 1];
+}
+
    
 
   const navigate = useNavigate();
@@ -100,9 +113,9 @@ const c_language_topics = [
   const getContent = async () => {
     // console.log("Fetching from",`${BASE_URL}/app/getcont/content`)
     try {
-      const data = await axios.get(`${BASE_URL}/app/getcont/getCcontent`, { params: { title: searchtitle } });
+      const data = await axios.get(`${BASE_URL}/app/getcont/getCcontent`, { params: { title: formattedTopic } });
       //const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/content`, { params: { title: searchtitle } });
-      setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
+      setCont(data.data[0]?.content || `${formattedTopic} contetnt not available`);
     } catch (error) {
       console.log("Error", error)
 
@@ -110,7 +123,7 @@ const c_language_topics = [
   }
   useEffect(() => {
     getContent();
-  }, [searchtitle])
+  }, [formattedTopic])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -142,26 +155,17 @@ const c_language_topics = [
             <ul>
 
               {c_language_topics.map((topics, index) => (
-                <li onClick={() => { setSearchTitle(topics) }} key={index}>{topics}</li>
+                <li key={index}><Link to={`/c/${topics.replace(/\s+/g,'-')}`}>{topics}</Link></li>
+                
               ))}
             </ul>
           </div>
         </div>
 
         <div className='disp-cont-2'>
-          {/* {cont} */}
+        <CreatorViews formattedTopic={formattedTopic} tit="C" tagn={3}/>
 
-          <div dangerouslySetInnerHTML={{ __html: cont }} />
-          {cont?.trim() === `${searchtitle} contetnt not available`.trim() ?  
-          <button className='btn-18' onClick={() => routerchange(searchtitle,3)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont,3)}>Modify Content</button>
-          }
-
-           
-
-          <div className='disp-cont-btns'>
-            <button className='btn-12'>Previous Topic Topic Name</button>
-            <button className='btn-12'>Next Topic Topic Name</button>
-          </div>
+       <NextPrevTopic topics={c_language_topics} currentTopic={formattedTopic} basePath="/c"/>
         </div>
 
         <div className='disp-cont-3'>this is the right content</div>

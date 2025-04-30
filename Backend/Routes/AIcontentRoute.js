@@ -109,7 +109,7 @@ router.post('/generate',GenerateAIContent);
 // genearte chatgpt content
 // router.post('/generatechatgpt',generatechatgpt);
 
-router.get('/content',getcontent)
+router.get('/getcontent',getcontent)
 
 // router.put('/updatecont',updatecontent)
 

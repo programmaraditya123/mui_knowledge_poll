@@ -1,24 +1,13 @@
 import React, { lazy, Suspense } from 'react';
-import './HomePage.css'
-//import PrimarySearchAppBar from '../assets/Components/Navbar'
-//import Searcharea from '../assets/Components/Searcharea'
-// import TextCarousel from '../assets/Components/Carousel'
-//import Cards from '../assets/Components/Cards';
-// import EmblaCarousel from '../assets/Components/EmblaCarousel/EmblaCarousel';
+import './HomePage.css';
+//const Styling = lazy(() => import('./HomePage.css'))
 import a from '../assets/Images/a.jpeg'
 import b from '../assets/Images/b.jpeg'
 import c from '../assets/Images/c.jpeg'
 import d from '../assets/Images/b.jpeg'
-//import SmallCards from '../assets/Components/SmallCards/SmallCards';
-//import LargeCards from '../assets/Components/LargeCards/LargeCards';
 import { NavLink, useNavigate } from 'react-router';
-
 const TextCarousel = lazy(() => import('../assets/Components/Carousel'))
 const EmblaCarousel = lazy(() => import('../assets/Components/EmblaCarousel/EmblaCarousel'))
-// const a = lazy(() => import('../assets/Images/a.jpeg'))
-// const b = lazy(() => import('../assets/Images/b.jpeg'))
-// const c = lazy(() => import('../assets/Images/c.jpeg'))
-// const d = lazy(() => import('../assets/Images/b.jpeg'))
 const SmallCards = lazy(() => import('../assets/Components/SmallCards/SmallCards'))
 const LargeCards = lazy(() => import('../assets/Components/LargeCards/LargeCards'))
 const Cards = lazy(() => import('../assets/Components/Cards'))  
@@ -35,9 +24,11 @@ const HomePage = () => {
     navigate(path)
   };
   return (
-    // <Suspense fallback={<div>Loading ...</div>}>
+    
     <>
-    {/* <Features/> */}
+     <Suspense fallback={<>{null}</>}>
+      {/* <Styling/> */}
+    
     <div className='searchnav'>
      <PrimarySearchAppBar/>
      </div>
@@ -94,8 +85,7 @@ const HomePage = () => {
      <NavLink to='/react'><SmallCards title="React"/></NavLink>
      <NavLink to='/bootstrap'><SmallCards title="Bootstrap"/></NavLink>
      <NavLink to='/tailwind'><SmallCards title="Tailwind CSS"/></NavLink>
-     {/* <SmallCards title="Frontend Dev..."/>
-     <SmallCards title="Backend Dev.."/> */}
+     
 
      <br/>
       
@@ -167,10 +157,7 @@ const HomePage = () => {
       <NavLink to='/mysql'><SmallCards title = "MYSQL"/></NavLink>
      <NavLink to='/mongodb'><SmallCards title="MongoDB"/></NavLink>
      <NavLink to='/postgre'><SmallCards title="Postgre SQL"/></NavLink>
-     {/* <SmallCards title="Oracle"/> */}
-     {/* <SmallCards title="Db Browser"/>
-     <SmallCards title="MariaDB"/>
-     <SmallCards title="SQL Server"/> */}
+      
 
      <br/>
       
@@ -183,8 +170,7 @@ const HomePage = () => {
      <NavLink to='/aws'><SmallCards title="AWS"/></NavLink>
      <NavLink to='/gradle'><SmallCards title="Gradle"/></NavLink>
      <NavLink to='/gitlab'><SmallCards title="GitLab"/></NavLink>
-     {/* <SmallCards title="openStack"/>
-     <SmallCards title="grayLog"/><br/> */}
+     
       
      </div>
      <h3>Tutorials</h3><br/>
@@ -196,21 +182,21 @@ const HomePage = () => {
      <NavLink to='/pm'><SmallCards title="Project Management"/></NavLink>
     <NavLink to='/excel'><SmallCards title="Excel"/></NavLink>
      <NavLink to='/productm'><SmallCards title="Product Management"/></NavLink>
-     {/* <SmallCards title="Design Pattern"/> */}
+     
 
      <br/>
       
      </div>
      </div>
      </div>
-     {/* <Footer/> */}
      
       
       
       
      
+    </Suspense>
     </>
-    // </Suspense>
+    
   )
 }
 

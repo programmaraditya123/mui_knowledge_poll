@@ -1,11 +1,9 @@
 import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-//import Carousel from '../../Carousel';
-import axios from 'axios';
 import  '../Python/Python.css';
-//import { FaBars } from "react-icons/fa";
-import { useNavigate } from 'react-router';
-import { useLocation } from 'react-router';
+import { useNavigate , useLocation , useParams  , Link} from 'react-router';
+const CreatorViews  = lazy(() => import('../../../SmallComponents/CreatorViewsSection/CreatorViews'));
+const NextPrevTopic = lazy(() => import( '../../../SmallComponents/NextPrevTopic/NextPrevTopic'));
 
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
@@ -14,22 +12,20 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
 const Datascience = () => {
+  const {topic} = useParams();
+  const formattedTopic = decodeURIComponent(topic?.replace(/-/g,' '))
   const [cont, setCont] = useState("");
   const location = useLocation();
   const title = location.state?.Title;
-  const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Introduction to Data Science" : title);
-  // console.log("++++++++++++", searchtitle);
+  const [searchtitle, setSearchTitle] = useState();
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
-  // console.log("------------",cont)
-  // console.log("2222222222",title)
-   
 
 const datascience_topics = [
     
     "Introduction to Data Science",
     "Data Science Lifecycle",
-    "Types of Data (Structured, Unstructured, Semi-structured)",
+    "Types of Data (Structured, Unstructured, Semi structured)",
     "Statistics for Data Science",
     "Probability Theory",
     "Descriptive Statistics",
@@ -60,7 +56,7 @@ const datascience_topics = [
     "Matplotlib",
     "Seaborn",
     "Plotly",
-    "Scikit-learn",
+    "Scikit learn",
     "Statsmodels",
     "SciPy",
 
@@ -149,37 +145,6 @@ const datascience_topics = [
 ]
 
 
-
-
-
-   
-
-  const navigate = useNavigate();
-  const routerchange = (Title,tag) => {
-    const path = "/writeearn"
-    navigate(path,{state:{Title,tag}});
-  }
-  const routerchange1 = (Title,Content,tag) => {
-    const path = "/writeearn"
-    navigate(path,{state:{Title,Content,tag}})
-  }
-  // http://13.201.93.211/api/home
-
-  const getContent = async () => {
-    // console.log("Fetching from",`${BASE_URL}/app/getcont/content`)
-    try {
-      const data = await axios.get(`${BASE_URL}/app/getcont/getdscontent`, { params: { title: searchtitle } });
-      //const data = await axios.get(`https://knowledgepoll.site/api/app/getcont/content`, { params: { title: searchtitle } });
-      setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
-    } catch (error) {
-      console.log("Error", error)
-
-    }
-  }
-  useEffect(() => {
-    getContent();
-  }, [searchtitle])
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -210,26 +175,18 @@ const datascience_topics = [
             <ul>
 
               {datascience_topics.map((topics, index) => (
-                <li onClick={() => { setSearchTitle(topics) }} key={index}>{topics}</li>
+                <li key={index}><Link to={`/datascience/${topics.replace(/\s+/g,'-')}`}>{topics}</Link></li>
               ))}
             </ul>
           </div>
         </div>
 
         <div className='disp-cont-2'>
-          {/* {cont} */}
+        <CreatorViews formattedTopic={formattedTopic} tit="ds" tagn={13}/>
 
-          <div dangerouslySetInnerHTML={{ __html: cont }} />
-          {cont?.trim() === `${searchtitle} contetnt not available`.trim() ?  
-          <button className='btn-18' onClick={() => routerchange(searchtitle,13)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont,13)}>Modify Content</button>
-          }
+      <NextPrevTopic topics={datascience_topics} currentTopic={formattedTopic} basePath="/datascience"/>
 
-           
-
-          <div className='disp-cont-btns'>
-            <button className='btn-12'>Previous Topic Topic Name</button>
-            <button className='btn-12'>Next Topic Topic Name</button>
-          </div>
+       
         </div>
 
         <div className='disp-cont-3'>this is the right content</div>

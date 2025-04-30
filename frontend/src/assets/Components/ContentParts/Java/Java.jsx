@@ -1,25 +1,23 @@
 import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-//import Carousel from '../../Carousel';
-import axios from 'axios';
-//import { FaBars } from "react-icons/fa";
-import { useNavigate } from 'react-router';
+import {  useLocation , useParams  , Link} from 'react-router';
+const CreatorViews  = lazy(() => import('../../../SmallComponents/CreatorViewsSection/CreatorViews'));
+const NextPrevTopic = lazy(() => import( '../../../SmallComponents/NextPrevTopic/NextPrevTopic'));
+
 const Carousel = lazy(() => import('../../Carousel'));
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-import { useLocation } from 'react-router';
+ 
 
 
 
 const Java = () => {
-  const [cont, setCont] = useState("");
+  const {topic} = useParams();
+  const formattedTopic = decodeURIComponent(topic?.replace(/-/g,' '))
   const location = useLocation();
   const title = location.state?.Title;
-  const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Introduction to Java" : title);
-  //console.log("++++++++++++", searchtitle);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
-  // console.log("------------",cont)
 
 const java_topics = [
     "Introduction to Java",
@@ -73,38 +71,7 @@ const java_topics = [
     "JVM Internals and Performance Tuning",
     "Security in Java (Encryption, Hashing)"
 ]
-
-
-
-
- 
-
    
-
-  const navigate = useNavigate();
-  const routerchange = (Title,tag) => {
-    const path = "/writeearn"
-    navigate(path,{state:{Title,tag}});
-  }
-  const routerchange1 = (Title,Content,tag) => {
-    const path = "/writeearn"
-    navigate(path,{state:{Title,Content,tag}})
-  }
-  // http://13.201.93.211/api/home
-
-  const getContent = async () => {
-    try {
-      //const data = await axios.get(`http://localhost:8000/app/getcont/getreactcontent`, { params: { title: searchtitle } });
-     const data = await axios.get(`${BASE_URL}/app/getcont/getjavacontent`, { params: { title: searchtitle } });
-      setCont(data.data[0]?.content || `${searchtitle} contetnt not available`);
-    } catch (error) {
-      console.log("Error", error)
-
-    }
-  }
-  useEffect(() => {
-    getContent();
-  }, [searchtitle])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -138,27 +105,17 @@ const java_topics = [
             <ul>
 
               {java_topics.map((topics, index) => (
-                <li onClick={() => { setSearchTitle(topics) }} key={index}>{topics}</li>
+                <li key={index}><Link to={`/java/${topics.replace(/\s+/g,'-')}`}>{topics}</Link></li>
               ))}
             </ul>
           </div>
         </div>
 
         <div className='disp-cont-2'>
-          {/* {cont} */}
+        <CreatorViews formattedTopic={formattedTopic} tit="java" tagn={2}/>
 
-          <div dangerouslySetInnerHTML={{ __html: cont }} />
-          {cont?.trim() === `${searchtitle} contetnt not available`.trim() ?  
-          <button className='btn-18' onClick={() => routerchange(searchtitle,2)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont,2)}>Modify Content</button>
-          }
+         <NextPrevTopic topics={java_topics} currentTopic={formattedTopic} basePath="/java"/>
 
-          {/* <p>Nothing to show here</p> */}
-          {/* <button className='btn-13' onClick={generateContent}>Click to Generate Content</button> */}
-
-          <div className='disp-cont-btns'>
-            <button className='btn-12'>Previous Topic Topic Name</button>
-            <button className='btn-12'>Next Topic Topic Name</button>
-          </div>
         </div>
 
         <div className='disp-cont-3'>this is the right content</div>

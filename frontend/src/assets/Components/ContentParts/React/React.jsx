@@ -1,24 +1,17 @@
-import React, { lazy, Suspense, useEffect,useRef, useState } from 'react';
+import { lazy, Suspense, useEffect,useRef, useState } from 'react';
 import '../../../Components/Contentpage/ContentPage.css';
-import axios from 'axios';
 import { Link, useNavigate, useParams,useLocation} from 'react-router';
 import CreatorViews from '../../../SmallComponents/CreatorViewsSection/CreatorViews';
+import NextPrevTopic from '../../../SmallComponents/NextPrevTopic/NextPrevTopic';
 const Carousel = lazy(() => import('../../Carousel'))
 const FaBars = lazy(() => import('react-icons/fa').then(module => ({ default: module.FaBars })));
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-const Reacts = () => {
+const ReactContent = () => {
   const {topic} = useParams();
   const formattedTopic = decodeURIComponent(topic?.replace(/-/g,' ')) || "Basics of React";
-  const [cont, setCont] = useState("");
-  const [tagu,setTagu] = useState("");
-  const [views,setViews] = useState();
-  const [creator,setCreator] = useState("")
-  const [time,setTime] = useState("")
   const location = useLocation();
   const title = location.state?.Title;
-  // const [searchtitle, setSearchTitle] = useState(title === "" || title === undefined ? "Basics of React" : title);
-  const [searchtitle, setSearchTitle] = useState(formattedTopic);
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   
@@ -105,64 +98,6 @@ const Reacts = () => {
     "CI/CD for React Apps"
 ]
 
-
-const currentIndex = react_topics.findIndex(t => t === formattedTopic);
-const prevTopic = react_topics[currentIndex - 1];
-const nextTopic = react_topics[currentIndex + 1];
- 
-
- 
-
-  const navigate = useNavigate();
-  const routerchange = (Title,tag) => {
-    const path = "/writeearn"
-    navigate(path,{state:{Title,tag}});
-  }
-  const routerchange1 = (Title,Content,tag) => {
-    const path = "/writeearn"
-    navigate(path,{state:{Title,Content,tag}})
-  }
- 
-
-  const getContent = async () => {
-    try {
-      //  const data = await axios.get(`${BASE_URL}/app/getcont/getreactcontent`, { params: { title: searchtitle } });
-       const data = await axios.get(`${BASE_URL}/app/getcont/getreactcontent`, { params: { title: formattedTopic } });
-      setCont(data.data[0]?.content || `${formattedTopic} contetnt not available`);
-      setTagu(data.data[0]?.tag);
-      setViews(data.data[0]?.views);
-      setCreator(data.data[0]?.creator);
-      setTime(data.data[0]?.createdAt);
-    } catch (error) {
-      console.log("Error", error)
-
-    }
-  }
-
-
-
-  const updateViews = async () =>{
-    try {
-      const view = await axios.post(`${BASE_URL}/app/updateuser/updateviews`,{title:searchtitle,tag:tagu,views:(views || 0)+1 })
-    } catch (error) {
-      console.log("Error2",error)
-      
-    }
-  }
-
-  useEffect(() => {
-    getContent();
-  }, [formattedTopic])
-
-  useEffect(() => {
-    if (tagu && searchtitle){
-    const timer = setTimeout(() => {
-         updateViews();
-    },30000);
-    return () => clearTimeout(timer);
-  }
-  },[tagu,searchtitle])
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -185,9 +120,9 @@ const nextTopic = react_topics[currentIndex + 1];
       <Carousel b="State Handling" c="Hooks" d="React Comments" e="Arrow Function" f="UseState" g="Props" h="React Router" i="Event Handling" />
       </Suspense>
       <button className='btn-17' >
-      <Suspense fallback={null}>
+       
       <FaBars onClick={()=>setShowMenu(!showMenu)} />
-      </Suspense>
+       
       </button>
       <div className='disp-cont'>
         <div ref={menuRef} className={`disp-cont-1 ${showMenu ? "show":""}`}>
@@ -202,21 +137,10 @@ const nextTopic = react_topics[currentIndex + 1];
         </div>
 
         <div className='disp-cont-2'>
-          {/* {cont} */}
+        <CreatorViews formattedTopic={formattedTopic} tit="react" tagn={1}/>
 
-          <div dangerouslySetInnerHTML={{ __html: cont }} />
-          {cont?.trim() === `${searchtitle} contetnt not available`.trim() ?  
-          <button className='btn-18' onClick={() => routerchange(searchtitle,1)}>Write Content</button> : <button className='btn-18' onClick={() => routerchange1(searchtitle,cont,1)}>Modify Content</button>
-          }
-
-         
-           <CreatorViews name={creator} views={views} time={time}/>
-          <div className='disp-cont-btns'>
-            
-            {prevTopic && <Link to={`/react/${encodeURIComponent(prevTopic)}`}><button className='btn-12'>Previous: {prevTopic}</button></Link>}
-            {nextTopic && <Link to={`/react/${encodeURIComponent(nextTopic)}`}><button className='btn-12'>Next: {nextTopic}</button></Link>}
-
-          </div>
+        <NextPrevTopic topics={react_topics} currentTopic={formattedTopic} basePath="/react"/>
+           
         </div>
 
         <div className='disp-cont-3'>this is the right content</div>
@@ -225,4 +149,4 @@ const nextTopic = react_topics[currentIndex + 1];
   )
 }
 
-export default Reacts;
+export default ReactContent;
