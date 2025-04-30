@@ -30,7 +30,7 @@ const Mysql = lazy(() => import('./assets/Components/ContentParts/MysqlPage/Mysq
 const Mongodb = lazy(() => import('./assets/Components/ContentParts/MongoDBPage/Mongodb.jsx'));
 const Postgre = lazy(() => import('./assets/Components/ContentParts/PostgreSql/Postgre.jsx'));
 const DockerPage = lazy(() => import('./assets/Components/ContentParts/DockerPage/DockerPage.jsx'));
-const Kubernetes = lazy(() => import('./assets/Components/ContentParts/KubernetesPage/Kubernetes.jsx'));
+//const Kubernetes = lazy(() => import('./assets/Components/ContentParts/KubernetesPage/Kubernetes.jsx'));
 const Git = lazy(() => import('./assets/Components/ContentParts/Git/Git.jsx'));
 const AWS = lazy(() => import('./assets/Components/ContentParts/AWSPage/AWS.jsx'));
 const Gradle = lazy(() => import('./assets/Components/ContentParts/GradlePage/Gradle.jsx'));
