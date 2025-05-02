@@ -1,6 +1,7 @@
 const express = require('express');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const {Article,React, Java, cplusplus, golang,rust,C, perl, JavaScript, Html, Css, Bootstrap, Tailwindcss, Datascience, ml, dl, da, aiagents, sklearn, matplotlib, pandas, numpy, seaborn, operatingsystem, computernetwork, dbms, oops, fla, cd, dsa, isdh, sql, mysql, mongodb, postgresql, docker, kubernetes, git, aws, gradle, gitlab, systemdesign, android, linux, softwaretesting, projectmanagement, productmanagement, excel} = require("../Models/ContentSchema");
+const {Article,React, Java, cplusplus, golang,rust,C, perl, JavaScript, Html, Css, Bootstrap, Tailwindcss, Datascience, ml, dl, da, aiagents, sklearn, matplotlib, pandas, numpy, seaborn, operatingsystem, computernetwork, dbms, oops, fla, cd, dsa, isdh, sql,
+     mysql, mongodb, postgresql, docker, kubernetes, git, aws, gradle, gitlab, systemdesign, android, linux, softwaretesting, projectmanagement, productmanagement, excel} = require("../Models/ContentSchema");
 //import OpenAI from "openai";
 //const {OpenAI} = require('openai')
 require("dotenv").config();

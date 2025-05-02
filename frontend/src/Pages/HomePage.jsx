@@ -6,6 +6,7 @@ import b from '../assets/Images/b.jpeg'
 import c from '../assets/Images/c.jpeg'
 import d from '../assets/Images/b.jpeg'
 import { NavLink, useNavigate } from 'react-router';
+import CoursesPage from '../assets/Components/CoursesPage/CoursesPage';
 const TextCarousel = lazy(() => import('../assets/Components/Carousel'))
 const EmblaCarousel = lazy(() => import('../assets/Components/EmblaCarousel/EmblaCarousel'))
 const SmallCards = lazy(() => import('../assets/Components/SmallCards/SmallCards'))
@@ -43,6 +44,11 @@ const HomePage = () => {
       </div>
      
      <div className='card'>
+     <CoursesPage/>
+     {/* <div className='carditem'><Cards title="mern stack" description="Learn Full Stack Web development" 
+        creator="aditya" likes = {10} comments = {4}
+       /></div> */}
+      {/* <div className='carditem'><Cards/></div>
       <div className='carditem'><Cards/></div>
       <div className='carditem'><Cards/></div>
       <div className='carditem'><Cards/></div>
@@ -50,8 +56,7 @@ const HomePage = () => {
       <div className='carditem'><Cards/></div>
       <div className='carditem'><Cards/></div>
       <div className='carditem'><Cards/></div>
-      <div className='carditem'><Cards/></div>
-      <div className='carditem'><Cards/></div>
+      <div className='carditem'><Cards/></div> */}
 </div>
      
      <div className='ebla'>

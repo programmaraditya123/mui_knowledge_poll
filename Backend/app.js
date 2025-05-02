@@ -13,7 +13,7 @@ const multer = require("multer");
 //const Grid = require("gridfs-stream");
 //const { MongoClient, GridFSBucket } = require('mongodb');
 const { Readable } = require('stream');
-//const path = require('path');
+const path = require('path');
 const Course = require('./Models/CourseModel');
 require("dotenv").config();
 // const http = require('http');
@@ -145,10 +145,17 @@ app.post('/upload',upload.single('video'),(req,res) => {
         .on('error',(err) => res.status(500).json({message:err.message}))
         // .on('finish',() => res.status(201).json({message:'video uploaded',fileId:uploadStream.id,filename:manualFilename}));
         .on('finish',async () => {
+          if (!req.body.courseId || !req.body.sequenceNumber) {
+            return res.status(400).json({ message: "Course ID and sequence number are required" });
+           }
+        
             try {
-                console.log("Updating course with ID:", req.body.courseId)
+              const { courseId , sequenceNumber } = req.body;
+                console.log("Updating course with ID:", courseId);
+                console.log("Updating course with sequence number:",sequenceNumber);
+                console.log("Course video with file name:" , manualFilename);
                 // update course document with uploaded file name
-                const updateCourse = await Course.findByIdAndUpdate(req.body.courseId,{videoName:manualFilename},{new:true});
+                const updateCourse = await Course.findByIdAndUpdate(courseId,{$push : {videos : { sequenceNumber,videoName : manualFilename}}},{new:true});
 
                 if(!updateCourse){
                     return res.status(404).json({message:"Course Not Found"})

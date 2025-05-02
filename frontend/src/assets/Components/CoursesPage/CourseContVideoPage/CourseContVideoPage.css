@@ -1,0 +1,14 @@
+.coursevideos1{
+    display: flex;
+    gap: 4rem;
+}
+.video-item{
+    border: 0.2rem solid black;
+}
+.video-item{
+    cursor:pointer;
+}
+.video-item:hover{
+    background-color: black;
+    color: white;
+}

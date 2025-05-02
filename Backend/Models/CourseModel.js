@@ -29,22 +29,46 @@ const courseSchema = new mongoose.Schema({
     },
     uploadedon:{
         type:Date,
-        default:Date.now()
+        default:Date.now
     },
-    videoName:{
-        type:String
+    videos: [
+  {
+    sequenceNumber: {
+      type: Number,
+      required: true
     },
+    videoName: {
+      type: String,
+      required: true
+    }
+  }
+]
+,
     likes:{
         type:Number,
         default:0
     },
-    comments:{
-        type:[String]  
+    dislikes:{
+         type:Number,
+         default:0
     },
+    comments: [
+  {
+    text: String,
+    author: String,
+    postedAt: {
+      type: Date,
+      default: Date.now
+    }
+  }
+]
+,
     courseimg:{
          data:Buffer,
          contentType:String
-    }
+    },
+    tags: [String]
+
 },{timestamps:true})
 
 

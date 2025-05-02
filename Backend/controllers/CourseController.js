@@ -2,9 +2,10 @@ const express = require('express');
 const course = require('../Models/CourseModel');
 const { getBucket } = require('../config/db');
 
+
 const addCourse = async (req, res) => {
     try {
-        const { title, description, category, instructor, price, uploadedon, content } = req.body;
+        const { title, description, category, instructor, price, tags } = req.body;
         // validations 
         switch (true) {
             case !title:
@@ -15,15 +16,15 @@ const addCourse = async (req, res) => {
                 return res.status(500).send({ error: 'Category is required' });
             case !instructor:
                 return res.status(500).send({ error: 'Instructor  is required' });
-            case !price:
-                return res.status(500).send({ error: 'price is required' });
-            case !content:
-                return res.status(500).send({ error: 'content is required' });
+            case price === undefined || price === null:
+                return res.status(400).send({ error: 'Price is required' });
+            // case !videos || !Array.isArray(videos):
+            //     return res.status(400).send({ error: 'Videos array is required' });
 
 
         }
         const newCourse = new course({
-            title, description, category, instructor, price, uploadedon: uploadedon || Date.now(), content
+            title, description, category, instructor, price , tags
         })
         await newCourse.save();
         res.status(201).send({
@@ -232,8 +233,36 @@ const getVideo = async (req, res) => {
 };
 
 
+const getallCourses = async (req,res) => {
+    try {
+        const data = await course.find({});
+        res.json(data)
+        
+    } catch (error) {
+        res.send("Error in fetching courses")
+        
+    }
+};
+
+
+const getoneCourses = async (req,res) => {
+    const {id} = req.query;
+    try {
+        const data = await course.findById(id);
+        if(!data){
+            return res.send("Course not found")
+        }
+        res.json(data)
+        
+    } catch (error) {
+        res.send("Error in fetching courses")
+        
+    }
+};
 
 
 
 
-module.exports = { addCourse, getVideo };
+
+
+module.exports = { addCourse, getVideo, getallCourses , getoneCourses };

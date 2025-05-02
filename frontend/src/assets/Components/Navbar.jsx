@@ -3,7 +3,7 @@ import './Navbar.css';
 import { FaBars } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
 import { RiAccountPinCircleFill } from "react-icons/ri";
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
   const [pdrop,setPdrop] = useState(false);
@@ -61,7 +61,7 @@ const Navbar = () => {
         {/* <li></li> */}
         <div ref={dropref} className={`navdrop ${pdrop ? "navdropshow" : ""}`}>
           <li>Profile</li>
-          <li>Dashboard</li>
+          <Link to='/creatordashboard'><li>Dashboard</li></Link>
           <li>Setting</li>
         </div>
       </div>

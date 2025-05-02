@@ -1,6 +1,10 @@
 import { lazy, Suspense  } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes , Navigate } from 'react-router-dom';  
+import CreatorDashBoardHome from './assets/CreatorDashboard/CreatorDashBoardHome/CreatorDashBoardHome.jsx';
+import CreateCourse from './assets/VideoCourses/CreateCourse/CreateCourse.jsx';
+import CourseDescriptionPage from './assets/Components/CoursesPage/CourseDescriptionPage/CourseDescriptionPage.jsx';
+//import UploadVideoHome from './assets/VideoCourses/UploadVideoHome/UploadVideoHome.jsx';
 const App = lazy(() => import('./App.jsx'));
 const Javascript = lazy(() => import('./assets/Components/ContentParts/Javascript/Javascript.jsx'));
 const Html = lazy(() => import('./assets/Components/ContentParts/HTMLPage/Html.jsx'));
@@ -176,9 +180,13 @@ createRoot(document.getElementById('root')).render(
           <Route path="/community/pricing" element={<CommunityPricingPage />} />
           <Route path="/community/aboutus" element={<CommunityAboutUsPage />} />
           <Route path="/course/allcourses" element={<Courses />} />
-          <Route path="/course/coursedetail" element={<CourseDetail />} />
+          <Route path="/course/allcourses/startcourse" element={<CourseDetail />} />
+          <Route path="/course/allcourses/course/:id" element={<CourseDescriptionPage/>} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path='/creatordashboard' element={<CreatorDashBoardHome/>}/>
+          {/* <Route path='uploadvideo' element={<UploadVideoHome/>}/> */}
+          <Route path='/createnewcourse' element={<CreateCourse/>}/>
         </Routes>
       </Suspense>
        

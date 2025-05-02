@@ -1,0 +1,16 @@
+.createcourse{
+    text-align: center;
+}
+.videodesc{
+    display: flex;
+    justify-content: space-between;
+}
+.backtocrator{
+    display: flex;
+    justify-content: space-between;
+}
+.btn-11{
+    height: 2rem;
+    margin-top: 1.1rem;
+    
+}
