@@ -3,8 +3,10 @@ const path = require('path');
 const knowtube = require('../Models/KnowTubeModel');
 require('dotenv').config();
 
+const gcpCredentials = JSON.parse(process.env.GCP_CREDENTIALS)
+
 const storage = new Storage({
-    keyFilename: path.join(__dirname, '../gcs-key.json'),
+    keyFilename: gcpCredentials,
     projectId: process.env.GCP_PROJECT_ID,
   });
 
