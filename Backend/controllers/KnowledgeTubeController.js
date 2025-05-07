@@ -6,7 +6,7 @@ require('dotenv').config();
 const gcpCredentials = JSON.parse(process.env.GCP_CREDENTIALS)
 
 const storage = new Storage({
-    keyFilename: gcpCredentials,
+    credentials: gcpCredentials,
     projectId: process.env.GCP_PROJECT_ID,
   });
 
