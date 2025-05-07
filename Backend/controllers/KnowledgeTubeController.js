@@ -5,30 +5,51 @@ require('dotenv').config();
 
 const gcpCredentials = JSON.parse(process.env.GCP_CREDENTIALS)
 
+
+
+// const storage = new Storage({
+//     keyFilename: path.join(__dirname, '../gcs-key.json'),
+//     projectId: process.env.GCP_PROJECT_ID,
+//   });
+
 const storage = new Storage({
-    credentials: gcpCredentials,
-    projectId: process.env.GCP_PROJECT_ID,
-  });
+  credentials: gcpCredentials,
+  projectId: process.env.GCP_PROJECT_ID,
+});
 
 const bucket = storage.bucket(process.env.GCS_BUCKET);
 
 
  
 
-const getPresignedUrl = async (req,res) => {
-    try {
-        const { filename } = req.params;
-        const options = {
-          version: 'v4',
-          action: 'read',
-          expires: Date.now() + 15 * 60 * 1000, // 15 mins
-        };
-    
-        const [url] = await bucket.file(`videos/${filename}`).getSignedUrl(options);
-        res.status(200).json({ url });
-      } catch (error) {
-        res.status(500).json({ error: 'Failed to get signed URL' });
-      }
+const getPresignedUrl = async (req, res) => {
+  try {
+    const { filename } = req.params;
+    if (!filename) {
+      return res.status(400).json({ error: 'Filename is required' });
+    }
+
+    const options = {
+      version: 'v4',
+      action: 'read',
+      expires: Date.now() + 15 * 60 * 1000, // 15 minutes
+    };
+
+    const file = bucket.file(`videos/${filename}`);
+
+    // Confirm file exists (optional but useful for debugging)
+    // const [exists] = await file.exists();
+    // if (!exists) {
+    //   return res.status(404).json({ error: 'File not found in bucket' });
+    // }
+
+    const [url] = await file.getSignedUrl(options);
+
+    res.status(200).json({ url });
+  } catch (error) {
+    console.error('Error generating signed URL:', error); // Log full error
+    res.status(500).json({ error: 'Failed to get signed URL', detail: error.message });
+  }
 };
 
 const uploadVideo = async (req,res) => {
