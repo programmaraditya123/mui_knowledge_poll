@@ -3,6 +3,7 @@ const { addCourse, getVideo, getallCourses, getoneCourses } = require('../contro
  
 
 const Router = express.Router();
+Router.get('/getcoursebyid',getoneCourses)
 
 Router.post("/postCourse",addCourse);
 
@@ -10,7 +11,6 @@ Router.get('/video/:filename',getVideo);
 
 Router.get('/getcourses',getallCourses);
 
-Router.get('/getcoursebyid',getoneCourses)
  
 
  

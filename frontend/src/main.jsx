@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Routes , Navigate } from 'react-router-dom';
 import CreatorDashBoardHome from './assets/CreatorDashboard/CreatorDashBoardHome/CreatorDashBoardHome.jsx';
 import CreateCourse from './assets/VideoCourses/CreateCourse/CreateCourse.jsx';
 import CourseDescriptionPage from './assets/Components/CoursesPage/CourseDescriptionPage/CourseDescriptionPage.jsx';
+import CreatorUploadVedioPage from './KnowledgeTube/CreatorUploadVedioPage/CreatorUploadVedioPage.jsx';
+import KnowledgeTubeHome from './KnowledgeTube/KnowledgeTubeHome/KnowledgeTubeHome.jsx';
+import KnowTubeVideo from './KnowledgeTube/KnowTubeVideo/KnowTubeVideo.jsx';
 //import UploadVideoHome from './assets/VideoCourses/UploadVideoHome/UploadVideoHome.jsx';
 const App = lazy(() => import('./App.jsx'));
 const Javascript = lazy(() => import('./assets/Components/ContentParts/Javascript/Javascript.jsx'));
@@ -187,6 +190,9 @@ createRoot(document.getElementById('root')).render(
           <Route path='/creatordashboard' element={<CreatorDashBoardHome/>}/>
           {/* <Route path='uploadvideo' element={<UploadVideoHome/>}/> */}
           <Route path='/createnewcourse' element={<CreateCourse/>}/>
+          <Route path='/knowtube' element={<KnowledgeTubeHome/>}/>
+          <Route path='/knowtube/creatorupload' element={<CreatorUploadVedioPage/>}/>
+          <Route path='/knowtube/:video' element={<KnowTubeVideo />}/>
         </Routes>
       </Suspense>
        

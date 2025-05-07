@@ -7,6 +7,7 @@ import c from '../assets/Images/c.jpeg'
 import d from '../assets/Images/b.jpeg'
 import { NavLink, useNavigate } from 'react-router';
 import CoursesPage from '../assets/Components/CoursesPage/CoursesPage';
+import SEO from '../SearchEngineOptimization/Seo';
 const TextCarousel = lazy(() => import('../assets/Components/Carousel'))
 const EmblaCarousel = lazy(() => import('../assets/Components/EmblaCarousel/EmblaCarousel'))
 const SmallCards = lazy(() => import('../assets/Components/SmallCards/SmallCards'))
@@ -27,6 +28,17 @@ const HomePage = () => {
   return (
     
     <>
+    <SEO
+        title="Home-Knowledgepoll"
+        description="education platform for all learners"
+        canonical="https://www.knowledgepoll.site/"
+        ogTitle="python java react php c c++"
+        ogDescription="Buy the latest Nike Air Max online."
+        // ogImage="https://yourdomain.com/images/nike-air-max.jpg"
+        twitterCard="this is the home page"
+        twitterSite="@knowledgepoll"
+        twitterCreator="@aditya"
+      />
      <Suspense fallback={<>{null}</>}>
       {/* <Styling/> */}
     

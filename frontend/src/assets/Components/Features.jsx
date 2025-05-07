@@ -32,7 +32,7 @@ const Features = () => {
         <NavLink to='/'><li>Home</li></NavLink>
      <NavLink to='/aicont'><li>Choose your AI</li></NavLink>
      <NavLink to='/course/allcourses'><li>Courses</li></NavLink>
-     <li>Contests</li>
+     <NavLink to='/knowtube'><li>KnowledgeTube</li></NavLink>
      <li>Jobs</li>
      <li>Categories</li>
      <li>Research Papers</li>

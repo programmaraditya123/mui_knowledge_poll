@@ -7,6 +7,7 @@ const CourseRoute = require('./Routes/CourseRoute')
 const authUserRoute = require('./Routes/authUserRoute')
 const searchRoute = require("./Routes/searchRoute");
 const UpdatePageViews = require("./Routes/UpdatePageViews");
+const KnowledgeTube = require('./Routes/KnowledgeTube')
 const multer = require("multer");
 //const { GridFsStorage } = require("multer-gridfs-storage");
 //const mongoose = require("mongoose");
@@ -112,6 +113,10 @@ app.use("/app/userauth",authUserRoute);
 app.use("/app/searchdb",searchRoute);
 
 app.use("/app/updateuser",UpdatePageViews);
+
+//knowledgetube route 
+
+app.use("/app/knowtube",KnowledgeTube)
 
 app.get('/home',(req,res) =>{
     res.send("Heelo aditya this is home route")

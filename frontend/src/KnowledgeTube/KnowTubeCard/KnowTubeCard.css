@@ -1,0 +1,89 @@
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+    justify-content: center;
+    background-color: #181818;
+  }
+  
+  .card-video {
+    /* width: 320px; */
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+  
+  .thumbnail-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  video.thumbnail {
+    width: 345px;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid #333;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .thumbnail:hover {
+    transform: scale(1.03);
+  }
+  
+  
+  .duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  
+  .card-details {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .info {
+    flex: 1;
+  }
+  
+  .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0;
+    color: #fff;
+  }
+  
+  .channel {
+    font-size: 13px;
+    color: #aaa;
+    margin: 4px 0;
+  }
+  
+  .meta {
+    font-size: 12px;
+    color: #888;
+  }
+  
+  .verified {
+    color: #3ea6ff;
+    margin-left: 4px;
+  }
+  
